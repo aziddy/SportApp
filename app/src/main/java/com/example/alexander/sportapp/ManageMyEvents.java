@@ -20,7 +20,7 @@ import layout.ScreenSlidePageFragment;
 public class ManageMyEvents extends FragmentActivity{
 
 
-    ViewPager vPager;
+     ViewPager vPager;
 
     PagerAdapter vPagerAdapter;
 
