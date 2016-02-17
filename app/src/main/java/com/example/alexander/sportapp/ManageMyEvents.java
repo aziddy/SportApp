@@ -20,6 +20,8 @@ import layout.ScreenSlidePageFragment;
 public class ManageMyEvents extends FragmentActivity{
 
 
+    // GITHUB
+
      ViewPager vPager;
 
     PagerAdapter vPagerAdapter;
