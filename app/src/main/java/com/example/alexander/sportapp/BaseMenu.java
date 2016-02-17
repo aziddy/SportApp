@@ -29,7 +29,7 @@ import layout.ScreenSlidePageFragment;
 public class BaseMenu extends AppCompatActivity {
 
 
-
+ // git git git git git git
 
     int  DensityDpi;
 

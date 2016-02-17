@@ -20,7 +20,7 @@ import layout.ScreenSlidePageFragment;
 public class ManageMyEvents extends FragmentActivity{
 
 
-    //  GITHUBs
+    //  omfg
 
      ViewPager vPager;
 
