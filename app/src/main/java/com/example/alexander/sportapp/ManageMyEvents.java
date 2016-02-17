@@ -4,6 +4,7 @@ package com.example.alexander.sportapp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -33,9 +34,33 @@ public class ManageMyEvents extends FragmentActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 
+        TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
+        tl.addTab(tl.newTab().setText("Current"));
+        tl.addTab(tl.newTab().setText("Completed"));
+        tl.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
         vPager = (ViewPager) findViewById(R.id.pager);
         vPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         vPager.setAdapter(vPagerAdapter);
+
+        vPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tl));
+        tl.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                vPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
