@@ -1,0 +1,19 @@
+
+<!-- Make Circle Code -->
+
+<!-- USAGE
+
+android:background="@drawable/ripple_oval"
+
+-->
+
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/fabShape">
+        <shape android:shape="oval">
+            <solid android:color="#f23fff" />
+        </shape>
+    </item>
+</layer-list>

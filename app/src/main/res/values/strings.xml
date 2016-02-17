@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">sportapp</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu_bar">MenuBarActivity</string>
+    <string name="title_activity_find_host">FindHost</string>
+    <string name="title_activity_client_profile">clientProfile</string>
+    <string name="title_activity_find">FindActivity</string>
+    <string name="title_activity_find_event_detail">FindEventDetailActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_host__pick_sport">Host_PickSport</string>
+    <string name="title_activity_host__pick_time">Host_PickTime</string>
+    <string name="title_activity_host__pick_location">Host_PickLocation</string>
+    <string name="title_activity_google_places_autocomplete">GooglePlacesAutocompleteActivity
+    </string>
+    <string name="title_activity_host__pick_age">Host_PickAge</string>
+    <string name="title_activity_host__review_event">Host_ReviewEvent</string>
+    <string name="title_activity_host_league__create_one">HostLeague_CreateOne</string>
+    <string name="title_activity_delete">Map</string>
+    <string name="title_activity_manage_my_events">ManageMyEvents</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

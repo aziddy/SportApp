@@ -1,0 +1,37 @@
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/CommendHostButton"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@drawable/commend_square"
+        >
+
+
+        <ImageView
+            android:layout_width="27.5dp"
+            android:layout_height="25dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/whitestar"
+            android:layout_gravity="center_vertical"
+            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAlignment="viewEnd"
+                android:layout_gravity="center_vertical"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.alexander.pickupsports.FindHost"
+    tools:showIn="@layout/activity_find_host">
+
+
+
+  <!--  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FINDHOST"
+        android:padding="30dp"
+        /> -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <FrameLayout
+            android:id="@+id/hostFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_weight="0.5"
+            android:background="#FF0000">
+
+            <TextView
+                android:rotation="90"
+                android:layout_width="185dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textColor="#ffffff"
+                android:textSize="70dp"
+                android:text="HOST"
+                />
+
+        </FrameLayout>
+
+ <FrameLayout
+     android:id="@+id/findFrame"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_weight="0.5"
+     >
+
+
+
+     <TextView
+         android:rotation="90"
+         android:layout_marginTop="20dp"
+         android:layout_marginLeft="9dp"
+         android:layout_width="500dp"
+         android:layout_height="80dp"
+         android:layout_gravity="center"
+         android:textColor="#000"
+         android:textSize="70dp"
+         android:text="FIND MATCH"
+         />
+
+ </FrameLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+    <include layout="@layout/content_menu_bar" />
+
+    <Button
+        android:id="@+id/leagueBtn"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="League Option"
+        />
+</RelativeLayout>

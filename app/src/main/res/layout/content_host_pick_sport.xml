@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.alexander.pickupsports.Host_PickSport"
+    tools:showIn="@layout/activity_host_pick_sport">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/pickHostTypeBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+
+
+
+
+        <Button
+            android:id="@+id/casualHostBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Casual"
+            android:layout_weight="0.5"
+            android:background="@drawable/outline"
+            />
+
+
+
+
+            <Button
+                android:id="@+id/competitiveHostBtn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Competitive"
+                android:layout_weight="0.5"
+                android:background="@drawable/outline"
+                />
+
+        </LinearLayout>
+
+<ListView
+    android:id="@+id/hostTypeListView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+</ListView>
+
+</LinearLayout>
+
+</RelativeLayout>

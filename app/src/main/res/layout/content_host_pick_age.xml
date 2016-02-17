@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.alexander.pickupsports.Host_PickAge"
+    tools:showIn="@layout/activity_host_pick_age">
+
+
+    <LinearLayout
+        android:id="@+id/LlayoutHostPickAge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp" >
+
+        <TextView
+            android:text="Event Discovery Range"
+            android:textSize="27.5dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/discoverySeekBarValue"
+            android:text="Value"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <SeekBar
+            android:id="@+id/seekBarDiscovery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="15dp"
+        android:layout_margin="2dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    <LinearLayout
+        android:id="@+id/hostAgeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp" >
+
+        <TextView
+            android:text="Event Age Range"
+            android:textSize="30dp"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+        <TextView
+            android:id="@+id/AgeSeekBarValue"
+            android:text="Value"
+            android:textColor="#212121"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

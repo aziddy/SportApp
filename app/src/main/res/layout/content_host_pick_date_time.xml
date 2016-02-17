@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Host_PickDateTime"
+    tools:showIn="@layout/activity_host_pick_date_time">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="15dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+            <LinearLayout
+                android:layout_weight="0.7"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="15dp"
+                >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Date"
+        android:textStyle="bold"
+        android:textSize="30dp"
+
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/pickDateID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="aa2"
+
+        />
+
+
+            </LinearLayout>
+
+    <Button
+        android:background="#fab3f3"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.1"
+        android:id="@+id/setDateBtn"
+        android:layout_width="75dp"
+        android:text="Set Date"
+
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="15dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+            <LinearLayout
+                android:layout_weight="0.7"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="15dp"
+                >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Time"
+        android:textStyle="bold"
+        android:textSize="30dp"
+
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/pickTimeID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:text="aa"
+        android:textSize="20dp"
+
+        />
+            </LinearLayout>
+    <Button
+        android:background="#fab3f3"
+        android:layout_weight="0.1"
+        android:id="@+id/setTimeBtn"
+        android:layout_width="75dp"
+        android:text="Set Time"
+        android:layout_height="match_parent" />
+</LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="15dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp" >
+
+
+<TextView
+    android:text="Event Duration"
+    android:textAlignment="center"
+    android:textSize="30dp"
+    android:textColor="#000000"
+
+    android:textStyle="bold"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/EventDurationValueText"
+        android:text="Value"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <SeekBar
+        android:layout_marginTop="20dp"
+        android:id="@+id/SeekBarHostEventLength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp" >
+
+                <TextView
+                    android:text="Event Discovery Range"
+                    android:textSize="27.5dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center"
+                    />
+
+                <TextView
+                    android:id="@+id/discoverySeekBarValue"
+                    android:text="Value"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <SeekBar
+                    android:id="@+id/seekBarDiscovery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="15dp"
+            android:layout_margin="2dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <LinearLayout
+                android:id="@+id/hostAgeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp" >
+
+                <TextView
+                    android:text="Event Age Range"
+                    android:textSize="30dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+                <TextView
+                    android:id="@+id/AgeSeekBarValue"
+                    android:text="Value"
+                    android:textColor="#212121"
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+<!--
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="#bbbbbb"
+            >
+
+        </FrameLayout>
+-->
+
+</LinearLayout>
+</ScrollView>
+
+
+
+
+
+
+
+
+
+
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    -->
+
+<!--
+    <TimePicker
+        android:id="@+id/hostTimePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+    </TimePicker>
+
+    <DatePicker
+        android:id="@+id/hostDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+    </DatePicker>
+-->
+</RelativeLayout>

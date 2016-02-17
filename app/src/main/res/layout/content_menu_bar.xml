@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+    <!--   tools:context="com.example.alexander.pickupsports.MenuBarActivity" -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.375in"
+        android:orientation="horizontal"
+
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+
+        >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+        <ImageView
+            android:id="@+id/homeMenu"
+            android:layout_width="wrap_content"
+            android:paddingTop="0.0875in"
+            android:paddingBottom="0.0875in"
+            android:paddingLeft="0.2in"
+           android:paddingRight="0.2in"
+            android:layout_height="match_parent"
+            android:src="@drawable/home"
+
+            />
+<!--
+        <ImageView
+            android:id="@+id/findHostMenu"
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="0.0875in"
+            android:paddingBottom="0.0875in"
+            android:paddingLeft="0.2in"
+            android:paddingRight="0.0875in"
+            android:background="@color/darkgrey"
+
+            />   -->
+    <!--  android:layout_marginLeft="50dp" -->
+        <ImageView
+            android:id="@+id/profileMenu"
+            android:layout_width="wrap_content"
+            android:paddingTop="0.0875in"
+            android:paddingBottom="0.0875in"
+            android:paddingLeft="0.2in"
+            android:paddingRight="0.2in"
+            android:layout_height="match_parent"
+
+            />
+
+
+
+        <ImageView
+            android:id="@+id/settingsMenu"
+            android:layout_width="wrap_content"
+            android:paddingTop="0.0875in"
+            android:paddingBottom="0.0875in"
+            android:paddingLeft="0.2in"
+            android:paddingRight="0.22in"
+            android:layout_height="match_parent"
+
+            />
+    <!--      android:background="@color/darkgrey"   -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#fff"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="#fff"
+            />
+
+</LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/fab_button_menu" />
+
+    <ImageButton
+
+        android:id="@+id/findhost_fab"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="-30dp"
+        android:layout_marginRight="-20dp"
+        android:background="@drawable/ripple_oval"
+        android:paddingTop="20dp"
+        android:paddingBottom="40dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/findhost"
+        android:scaleType="fitXY"
+
+        />
+
+</RelativeLayout>

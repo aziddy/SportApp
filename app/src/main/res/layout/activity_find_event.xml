@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".FindEventActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></Spinner>
+<LinearLayout
+    android:background="#0d91e5"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Filter"
+        android:padding="15dp"
+        />
+
+</LinearLayout>
+        </android.support.v7.widget.CardView>
+    <include layout="@layout/content_find_event" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
