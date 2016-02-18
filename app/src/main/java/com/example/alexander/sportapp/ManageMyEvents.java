@@ -38,7 +38,9 @@ Boolean pickupSelected = true;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_my_events);
-        SharedPreferences sf;
+        SharedPreferences sf = getSharedPreferences("ManageMyEventsActivityFragmentData", MODE_PRIVATE);
+        SharedPreferences.Editor sfedit = sf.edit();
+
 
 
 
