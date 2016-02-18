@@ -17,7 +17,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="65dp"
         >
 <LinearLayout
     android:layout_width="match_parent"
@@ -25,54 +25,34 @@
     android:orientation="horizontal"
     >
 <Button
+    android:id="@+id/PickupBtn"
     android:textColor="#ffffff"
+    android:textStyle="bold"
     android:layout_weight="0.5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:text="Pickup"
-    android:background="#F70A89"
+    android:background="#ce0c74"
     />
 
+    <!-- android:background="#F70A89" -->
+
     <Button
+        android:id="@+id/LeagueBtn"
         android:layout_weight="0.5"
+        android:textColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="League"
-        android:background="@drawable/outline"
+        android:background="#F70A89"
         />
 
 </LinearLayout>
     </FrameLayout>
-        <FrameLayout
+
+        <android.support.design.widget.TabLayout
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:text="Current"
-                    android:background="#B80766"
-                    android:textColor="#ffffff"
-                android:layout_weight="0.5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-                <Button
-                    android:text="Completed"
-                    android:background="@drawable/outline"
-
-                    android:layout_weight="0.5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-        </FrameLayout>
-        <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

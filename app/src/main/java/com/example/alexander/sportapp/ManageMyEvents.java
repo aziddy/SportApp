@@ -1,6 +1,9 @@
 package com.example.alexander.sportapp;
 
 
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,13 +17,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.Button;
 import android.widget.Toast;
 
+import layout.PickupCompletedFragment;
 import layout.ScreenSlidePageFragment;
+
+
 
 public class ManageMyEvents extends FragmentActivity{
 
-
+Boolean pickupSelected = true;
     //  omfg
 
      ViewPager vPager;
@@ -31,7 +38,8 @@ public class ManageMyEvents extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_my_events);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        SharedPreferences sf;
+
 
 
         TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
@@ -39,10 +47,46 @@ public class ManageMyEvents extends FragmentActivity{
         tl.addTab(tl.newTab().setText("Completed"));
         tl.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        final Button PickupBtn = (Button) findViewById(R.id.PickupBtn);
+        final Button LeagueBtn = (Button) findViewById(R.id.LeagueBtn);
+
+        PickupBtn.setTypeface(null, Typeface.BOLD);
+        LeagueBtn.setTypeface(null, Typeface.NORMAL);
+
+        PickupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickupSelected = true;
+                LeagueBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
+                PickupBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
+                PickupBtn.setTypeface(null, Typeface.BOLD);
+                LeagueBtn.setTypeface(null, Typeface.NORMAL);
+
+
+
+            }
+        });
+
+
+
+
+
+        LeagueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickupSelected = false;
+                PickupBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
+                LeagueBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
+                PickupBtn.setTypeface(null, Typeface.NORMAL);
+                LeagueBtn.setTypeface(null, Typeface.BOLD);
+
+            }
+        });
 
         vPager = (ViewPager) findViewById(R.id.pager);
         vPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         vPager.setAdapter(vPagerAdapter);
+
 
         vPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tl));
         tl.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -93,8 +137,36 @@ public class ManageMyEvents extends FragmentActivity{
         @Override
         public Fragment getItem(int position) {
             Toast.makeText(ManageMyEvents.this, Integer.toString(position), Toast.LENGTH_SHORT).show();
-            return new ScreenSlidePageFragment();
+
+
+
+            if ( false == pickupSelected){
+                if (position == 1){
+                    return new ScreenSlidePageFragment();
+                } else {
+                    return new PickupCompletedFragment();
+                }
+
+            } else {
+
+                if (position == 1){
+                    return new PickupCompletedFragment();
+                } else {
+                    return new ScreenSlidePageFragment();
+
+                }
+
+            }
+
+
+
+
         }
+
+
+
+
+
 
         @Override
         public int getCount() {
