@@ -16,7 +16,7 @@ public class FindHost extends BaseMenu {
         setContentView(R.layout.activity_find_host);
 
         // implement onClicklistener for menu
-
+        overridePendingTransition(R.anim.activity_in,R.anim.activity_out);
 
 
         currentContext = getApplicationContext();

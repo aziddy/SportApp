@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,8 +19,6 @@ import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.URL;
-
-import layout.ScreenSlidePageFragment;
 
 /**
  * Created by alexander on 12/13/2015.
@@ -157,9 +154,10 @@ public class BaseMenu extends AppCompatActivity {
                public void onClick(View view) {
 
                    Intent intentprofile = new Intent(BaseMenu.this, ManageMyEvents.class);
+
                   startActivity(intentprofile);
 
-
+                //   overridePendingTransition(0,0);
 
                }
            });

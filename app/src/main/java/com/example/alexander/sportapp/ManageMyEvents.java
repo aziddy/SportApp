@@ -1,9 +1,11 @@
 package com.example.alexander.sportapp;
 
 
+import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,16 +14,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import layout.PickupCompletedFragment;
-import layout.ScreenSlidePageFragment;
+import layout.ManageCompletedFragment;
+import layout.ManageCurrentFragment;
 
 
 
@@ -30,6 +30,9 @@ public class ManageMyEvents extends FragmentActivity{
 Boolean pickupSelected = true;
     //  omfg
 
+    Fragment frag0;
+    Fragment frag1;
+
      ViewPager vPager;
 
     PagerAdapter vPagerAdapter;
@@ -37,6 +40,7 @@ Boolean pickupSelected = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(0, 0);
         setContentView(R.layout.activity_manage_my_events);
         SharedPreferences sf = getSharedPreferences("ManageMyEventsActivityFragmentData", MODE_PRIVATE);
         SharedPreferences.Editor sfedit = sf.edit();
@@ -63,7 +67,8 @@ Boolean pickupSelected = true;
                 PickupBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
                 PickupBtn.setTypeface(null, Typeface.BOLD);
                 LeagueBtn.setTypeface(null, Typeface.NORMAL);
-
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+              //  trans.replace(R.id,frag0)
 
 
             }
@@ -88,6 +93,8 @@ Boolean pickupSelected = true;
         vPager = (ViewPager) findViewById(R.id.pager);
         vPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         vPager.setAdapter(vPagerAdapter);
+
+
 
 
         vPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tl));
@@ -144,30 +151,52 @@ Boolean pickupSelected = true;
 
             if ( false == pickupSelected){
                 if (position == 1){
-                    return new ScreenSlidePageFragment();
+
+                    frag1 = new ManageCompletedFragment();
+                    return frag1;
+
                 } else {
-                    return new PickupCompletedFragment();
+                    frag0 = new ManageCurrentFragment();
+                    return frag0;
                 }
 
             } else {
 
                 if (position == 1){
-                    return new PickupCompletedFragment();
+                    frag1 = new ManageCompletedFragment();
+                    return frag1;
+
                 } else {
-                    return new ScreenSlidePageFragment();
-
+                    frag0 = new ManageCurrentFragment();
+                    return frag0;
                 }
-
             }
-
-
-
 
         }
 
 
+class LoadNextWithoutLag extends AsyncTask<String, Void, String> {
+    @Override
+    protected void onPreExecute(){
+
+    }
+
+    @Override
+    protected String doInBackground(String... params){
+       //  Intent intent = new Intent(ManageMyEvents.this, )
+
+        //   return "21";
+        return "21";
+    }
+
+    @Override
+    protected void onPostExecute(String s){
+        //    pd.dismiss();
 
 
+        }
+
+    }
 
 
         @Override
