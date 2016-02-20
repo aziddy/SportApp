@@ -153,7 +153,7 @@ public class BaseMenu extends AppCompatActivity {
                @Override
                public void onClick(View view) {
 
-                   Intent intentprofile = new Intent(BaseMenu.this, ManageMyEvents.class);
+                   Intent intentprofile = new Intent(BaseMenu.this, ManageMyPickups.class);
 
                   startActivity(intentprofile);
 
@@ -173,7 +173,7 @@ ImageView settings = (ImageView) findViewById(R.id.settingsMenu);
 
            @Override
            public void onClick(View view) {
-           Intent intent = new Intent(BaseMenu.this, ManageMyEvents.class);
+           Intent intent = new Intent(BaseMenu.this, ManageMyPickups.class);
                startActivity(intent);
 
            }

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.alexander.sportapp.ManageMyEvents"
-    tools:showIn="@layout/activity_manage_my_events">
+    tools:context=".ManageMyPickups"
+    tools:showIn="@layout/activity_manage_my_pickups">
 
 
     <LinearLayout

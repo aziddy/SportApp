@@ -5,7 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.alexander.sportapp.R;
@@ -21,10 +25,46 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     LayoutInflater inflater;
     ViewGroup container;
 
+    String activityName = "";
+    Boolean pickup = false;
+    Boolean league = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
-        Toast.makeText(getContext(), "WOW", Toast.LENGTH_SHORT).show();
+
+
+/**------------------------ get which activity the fragment is in ----------------------------**/
+
+        for (int x = (getActivity().toString().length())-1; x > -1; x--){
+
+            if (getActivity().toString().charAt(x) == '.') {
+
+                for (int y = x+1; y < (getActivity().toString().length())-1; y++){
+                    if (getActivity().toString().charAt(y) == '@') {
+
+                        y = getActivity().toString().length()+40;
+
+                    } else {
+                        activityName += getActivity().toString().charAt(y);
+
+                    }
+                }
+                Toast.makeText(getActivity(), activityName, Toast.LENGTH_LONG).show();
+
+                if (activityName.equals("ManageMyPickups")) {
+                    pickup = true;
+                }
+
+                if (activityName.equals("ManageMyLeagues")) {
+                    league = true;
+                }
+
+                x = -1;
+            }
+        }
+/** ----------------------------------------------------------------------------------------- **/
+
     }
 
 
@@ -34,10 +74,46 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         this.inflater = inflater;
         this.container = container;
 
+
+
         View view = inflater.inflate(R.layout.fragment_manage_current, container, false);
 
 
+        String [] dataPickup = {"pickup", "pickup2", "pickup3", "pickup4", "pickup5", "pickup2", "pickup2", "pickup2", "pickup2", "pickup2"};
+        String [] dataLeague = {"League", "League2", "League3", "League4", "League5", "League2", "League2", "League2", "League2", "League2"};
+
+
+        if(pickup){
+
+            ListView listView = (ListView) view.findViewById(R.id.listView);
+            ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
+            listView.setAdapter(adp);
+
+
+
+
+        }
+
+
+        if (league){
+
+            ListView listView = (ListView) view.findViewById(R.id.listView);
+            ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataLeague);
+            listView.setAdapter(adp);
+
+
+        }
+
+
+
+
+
         Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
+
+
+
+
+
 
         clickBtn.setOnClickListener(this);
 

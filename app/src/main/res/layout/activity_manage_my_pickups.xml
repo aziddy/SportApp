@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.alexander.sportapp.ManageMyEvents">
+    tools:context=".ManageMyPickups">
 
 
 
-    <include layout="@layout/content_manage_my_events" />
+    <include layout="@layout/content_manage_my_pickups" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
