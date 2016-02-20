@@ -23,8 +23,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
         Toast.makeText(getContext(), "WOW", Toast.LENGTH_SHORT).show();
     }
 

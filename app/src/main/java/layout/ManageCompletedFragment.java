@@ -13,8 +13,6 @@ import com.example.alexander.sportapp.R;
 
 
 public class ManageCompletedFragment extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     LayoutInflater inflater;
     ViewGroup container;

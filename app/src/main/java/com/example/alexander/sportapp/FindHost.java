@@ -27,7 +27,7 @@ public class FindHost extends BaseMenu {
 
          FrameLayout hostFrame = (FrameLayout) findViewById(R.id.hostFrame);
 
-        hostFrame.setOnClickListener(new View.OnClickListener() {
+          hostFrame.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
 
