@@ -153,7 +153,7 @@ public class BaseMenu extends AppCompatActivity {
                @Override
                public void onClick(View view) {
 
-                   Intent intentprofile = new Intent(BaseMenu.this, ManageMyPickups.class);
+                   Intent intentprofile = new Intent(BaseMenu.this, clientProfile.class);
 
                   startActivity(intentprofile);
 

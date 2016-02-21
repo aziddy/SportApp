@@ -114,7 +114,7 @@ public class ManageCompletedFragment extends Fragment implements View.OnClickLis
         }
 
 
-
+/*
 
         if(v.getId() == R.id.clickBtn1){
 
@@ -126,6 +126,6 @@ public class ManageCompletedFragment extends Fragment implements View.OnClickLis
 
 
         }
-
+*/
     }
 }

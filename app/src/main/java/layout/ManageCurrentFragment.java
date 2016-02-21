@@ -12,7 +12,11 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.alexander.sportapp.FindEventAdapter;
+import com.example.alexander.sportapp.FindEventData;
 import com.example.alexander.sportapp.R;
+
+import java.util.ArrayList;
 
 
 public class ManageCurrentFragment extends Fragment implements View.OnClickListener {
@@ -86,8 +90,29 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         if(pickup){
 
             ListView listView = (ListView) view.findViewById(R.id.listView);
-            ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
-            listView.setAdapter(adp);
+        //    ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
+         //   listView.setAdapter(adp);
+
+            ArrayList<FindEventData> arrayListData = new ArrayList<FindEventData>();
+
+            FindEventData exampleData = new FindEventData("Soccer","Alexander Zidros", "4:55pm", "Ravina Park", "8 People Attending", R.drawable.srre, "43.659159", "-79.4725638");
+            FindEventData exampleDataTwo = new FindEventData("Squash","Alexander Bramwell", "1:25pm", " High Park Fitness", "2 People Attending", R.drawable.srre, "43.659159", "-79.4725638");
+
+            arrayListData.add(exampleDataTwo);
+
+            for (int x = 0; x < 10; x++) {
+
+                arrayListData.add(new FindEventData("Soccer","Alexander Zidros", "4:55pm", "Ravina Park", "8 People Attending", R.drawable.srre, "43.659159", "-79.4725638"));
+
+            }
+
+
+            arrayListData.add(exampleData);
+            arrayListData.add(exampleDataTwo);
+
+            FindEventAdapter adapter = new FindEventAdapter(getContext(),arrayListData);
+
+            listView.setAdapter(adapter);
 
 
 
@@ -108,14 +133,14 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
 
-        Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
+      //  Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
 
 
 
 
 
 
-        clickBtn.setOnClickListener(this);
+    //    clickBtn.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return view;
@@ -125,7 +150,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.clickBtn1){
+     /*   if(v.getId() == R.id.clickBtn1){
 
             Toast.makeText(getContext(), "wtf the FIRST worked", Toast.LENGTH_LONG).show();
            // ViewGroup vg = (ViewGroup) getView();
@@ -134,7 +159,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
         }
-
+*/
     }
 
 }
