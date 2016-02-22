@@ -105,7 +105,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
-        /** shit for layout margin via JAVA **/
+        /** shit for layout margin via JAVA code **/
 
 
         LinearLayout.LayoutParams parm = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
