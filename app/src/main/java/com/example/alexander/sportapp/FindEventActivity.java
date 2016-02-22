@@ -67,7 +67,7 @@ public class FindEventActivity extends BaseMenu {
 
                // arrayListData
 
-                FindViewEventDataEditor.putString("a","a");
+                FindViewEventDataEditor.putString("a", "a");
                 FindViewEventDataEditor.apply();
 
                 Intent onClickDetailIntent = new Intent(FindEventActivity.this, FindEventDetailActivity.class);
