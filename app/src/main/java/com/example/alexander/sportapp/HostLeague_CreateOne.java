@@ -1,6 +1,8 @@
 package com.example.alexander.sportapp;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,11 +10,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ActionMenuView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -105,18 +110,28 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
+
+
         /** shit for layout margin via JAVA code **/
 
+        ImageView RoundRobinImg = (ImageView) findViewById(R.id.EliminationImg);
 
-        LinearLayout.LayoutParams parm = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        parm.setMargins(5, 5, 5, 5);
 
+        FrameLayout.LayoutParams parm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        parm.setMargins(DpToPixels(2), DpToPixels(2),DpToPixels(2), DpToPixels(7));
+
+        RoundRobinImg.setLayoutParams(parm);
 
         // layout.addview()
 
         // or  this.setLayoutParams(lp);
 
+    }
 
+
+    public static int DpToPixels(int dp){
+
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
 }
