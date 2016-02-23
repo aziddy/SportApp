@@ -1,23 +1,15 @@
 package com.example.alexander.sportapp;
 
-import android.app.ActionBar;
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ActionMenuView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -27,9 +19,10 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
      int activeCheckMark = 1;
 
-    boolean selectedSport = false;
-    boolean selectedRankType = false;
-    boolean selectedLeagueType = false;
+    boolean selectedSportBoolean = false;
+    boolean selectedLeagueTypeBoolean = false;
+
+    String selectedLeagueType = "";
   //  boolean
 
 
@@ -41,9 +34,10 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        selectedSport = true;
-         selectedRankType = true;
-         selectedLeagueType = true;
+        // SHARED PREF
+        SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+        SharedPreferences.Editor edit = CreateLeague.edit();
+
 
         final EditText LeagueNameEditText = (EditText) findViewById(R.id.LeagueNameEditText);
 
@@ -63,9 +57,11 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
              //   Toast.makeText(getApplicationContext(), "CREATE EVENT", Toast.LENGTH_LONG).show();
 
-                if (selectedLeagueType && selectedRankType && selectedSport){
+                if (selectedLeagueTypeBoolean && selectedSportBoolean){
 
-                    if (LeagueNameEditText.getText().toString().length() > 4){
+                    if (LeagueNameEditText.getText().toString().length() > 3){
+
+
 
                     } else {
                         Toast.makeText(getApplicationContext(), "League Name cant be under 4 letters", Toast.LENGTH_LONG).show();
@@ -98,26 +94,14 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
         final ImageView RoundRobinImg = (ImageView) findViewById(R.id.RoundRobinImg);
-        final FrameLayout.LayoutParams RoundRobinImgParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        RoundRobinImgParm.setMargins(DpToPixels(1), DpToPixels(1), DpToPixels(1), DpToPixels(1));
-        RoundRobinImg.setLayoutParams(RoundRobinImgParm);
-
-
         final ImageView EliminationImg = (ImageView) findViewById(R.id.EliminationImg);
-        final FrameLayout.LayoutParams EliminationImgParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        EliminationImgParm.setMargins(DpToPixels(0), DpToPixels(0), DpToPixels(0), DpToPixels(0));
-        EliminationImg.setLayoutParams(EliminationImgParm);
+        final ImageView divisionImg = (ImageView) findViewById(R.id.divisionImg);
+        final ImageView manualImg = (ImageView) findViewById(R.id.manualImg);
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        final FrameLayout.LayoutParams checkmarkParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        checkmarkParm.setMargins(DpToPixels(0), DpToPixels(0), DpToPixels(0), DpToPixels(0));
-
-
-        final FrameLayout.LayoutParams notcheckmarkParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        notcheckmarkParm.setMargins(DpToPixels(1), DpToPixels(1), DpToPixels(1), DpToPixels(1));
 
 
         /** -------------------------------------------------------------------------- */
@@ -169,47 +153,78 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
+        // ---------------------------------- ROUND ROBIN ---------------------------------- //
+
         LinearLayout roundRobinBtn = (LinearLayout) findViewById(R.id.roundRobinBtn);
         roundRobinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Round Robin", Toast.LENGTH_SHORT).show();
 
-                if (getActiveCheckMark() == 0) {
-
-
-                } else {
-                    RoundRobinImg.setLayoutParams(checkmarkParm);
                     RoundRobinImg.setImageResource(R.drawable.checkmark);
-
-                    EliminationImg.setLayoutParams(notcheckmarkParm);
-                    EliminationImg.setImageResource(R.drawable.notcheckmark);
-                    setActiveCheckMark(0);
-
-                }
+                    EliminationImg.setImageResource(0);
+                    divisionImg.setImageResource(0);
+                    manualImg.setImageResource(0);
+                   selectedLeagueType = "RoundRobin";
+                selectedLeagueTypeBoolean = true;
 
             }
         });
 
-        LinearLayout EliminationBtn = (LinearLayout) findViewById(R.id.EliminationBtn);
+        // ---------------------------------- ELIM ---------------------------------- //
 
+        LinearLayout EliminationBtn = (LinearLayout) findViewById(R.id.EliminationBtn);
         EliminationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Elim", Toast.LENGTH_SHORT).show();
 
-
-                RoundRobinImg.setLayoutParams(notcheckmarkParm);
-                RoundRobinImg.setImageResource(R.drawable.notcheckmark);
-
-                EliminationImg.setLayoutParams(checkmarkParm);
+                RoundRobinImg.setImageResource(0);
                 EliminationImg.setImageResource(R.drawable.checkmark);
-                setActiveCheckMark(1);
+                divisionImg.setImageResource(0);
+                manualImg.setImageResource(0);
+                selectedLeagueType = "Elimination";
+                selectedLeagueTypeBoolean = true;
 
             }
         });
 
+        // ---------------------------------- DIVISION ---------------------------------- //
 
+        LinearLayout divisionBtn = (LinearLayout) findViewById(R.id.divisionBtn);
+        divisionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                RoundRobinImg.setImageResource(0);
+                EliminationImg.setImageResource(0);
+                divisionImg.setImageResource(R.drawable.checkmark);
+                manualImg.setImageResource(0);
+                selectedLeagueType = "Division";
+                selectedLeagueTypeBoolean = true;
+
+
+
+            }
+        });
+
+        // ---------------------------------- MANUAL ---------------------------------- //
+
+        LinearLayout manualBtn = (LinearLayout) findViewById(R.id.manualBtn);
+        manualBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                RoundRobinImg.setImageResource(0);
+                EliminationImg.setImageResource(0);
+                divisionImg.setImageResource(0);
+                manualImg.setImageResource(R.drawable.checkmark);
+                selectedLeagueType = "Manual";
+                selectedLeagueTypeBoolean = true;
+
+
+            }
+        });
 
 
 
@@ -249,23 +264,8 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    public int getActiveCheckMark() {
-
-       return activeCheckMark;
-
-    }
-
-
-    public void setActiveCheckMark(int pos) {
-
-        activeCheckMark = pos;
-
-    }
 
     public void IfCanGoToNextPage(int whichPart) {
-
-
-
 
 
 

@@ -176,7 +176,6 @@
                     android:paddingBottom="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/checkmark"
                     />
 
 
@@ -242,7 +241,6 @@
                     android:paddingBottom="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/notcheckmark"
                     />
 
 
@@ -256,6 +254,7 @@
             android:background="#b0adad"/>
 
         <LinearLayout
+            android:id="@+id/divisionBtn"
             android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -301,13 +300,13 @@
                 >
 
                 <ImageView
+                    android:id="@+id/divisionImg"
                     android:paddingRight="5dp"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/notcheckmark"
                     />
 
 
@@ -320,6 +319,7 @@
             android:background="#b0adad"/>
 
         <LinearLayout
+            android:id="@+id/manualBtn"
             android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -365,13 +365,13 @@
                 >
 
                 <ImageView
+                    android:id="@+id/manualImg"
                     android:paddingRight="5dp"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/notcheckmark"
                     />
 
 
