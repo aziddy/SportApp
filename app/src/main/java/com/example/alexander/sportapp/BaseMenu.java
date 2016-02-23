@@ -28,6 +28,8 @@ public class BaseMenu extends AppCompatActivity {
 
  // git update update update
 
+    // update
+
     int  DensityDpi;
 
     Context currentContext;

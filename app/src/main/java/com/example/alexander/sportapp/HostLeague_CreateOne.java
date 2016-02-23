@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ActionMenuView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,12 +27,25 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
      int activeCheckMark = 1;
 
+    boolean selectedSport = false;
+    boolean selectedRankType = false;
+    boolean selectedLeagueType = false;
+  //  boolean
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_league_create_one);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        selectedSport = true;
+         selectedRankType = true;
+         selectedLeagueType = true;
+
+        final EditText LeagueNameEditText = (EditText) findViewById(R.id.LeagueNameEditText);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -41,6 +55,35 @@ public class HostLeague_CreateOne extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        LinearLayout createLeagueBtn = (LinearLayout) findViewById(R.id.createLeagueBtn);
+
+        createLeagueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             //   Toast.makeText(getApplicationContext(), "CREATE EVENT", Toast.LENGTH_LONG).show();
+
+                if (selectedLeagueType && selectedRankType && selectedSport){
+
+                    if (LeagueNameEditText.getText().toString().length() > 4){
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "League Name cant be under 4 letters", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+
+                    Toast.makeText(getApplicationContext(), "Fill in all the fields", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+
+        //LeagueNameEditText.check
+
+
 
         String[] data = {"Soccer", "American Football", "BasketBall", "Baseball", "Squash"};
 
@@ -216,6 +259,15 @@ public class HostLeague_CreateOne extends AppCompatActivity {
     public void setActiveCheckMark(int pos) {
 
         activeCheckMark = pos;
+
+    }
+
+    public void IfCanGoToNextPage(int whichPart) {
+
+
+
+
+
 
     }
 
