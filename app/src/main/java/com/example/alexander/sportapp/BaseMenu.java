@@ -26,7 +26,7 @@ import java.net.URL;
 public class BaseMenu extends AppCompatActivity {
 
 
- // git update update
+ // git update update update
 
     int  DensityDpi;
 
