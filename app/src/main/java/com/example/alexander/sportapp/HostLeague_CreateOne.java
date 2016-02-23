@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class HostLeague_CreateOne extends AppCompatActivity {
 
-
+     int activeCheckMark = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,34 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         spinnerLeagueCreateSport.setAdapter(aa);
 
 
+        /** INTIALIZE IMAGE CIRCLES IN COMP TYPE SELECT */
+
+
+        final ImageView RoundRobinImg = (ImageView) findViewById(R.id.RoundRobinImg);
+        final FrameLayout.LayoutParams RoundRobinImgParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        RoundRobinImgParm.setMargins(DpToPixels(1), DpToPixels(1), DpToPixels(1), DpToPixels(1));
+        RoundRobinImg.setLayoutParams(RoundRobinImgParm);
+
+
+        final ImageView EliminationImg = (ImageView) findViewById(R.id.EliminationImg);
+        final FrameLayout.LayoutParams EliminationImgParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        EliminationImgParm.setMargins(DpToPixels(0), DpToPixels(0), DpToPixels(0), DpToPixels(0));
+        EliminationImg.setLayoutParams(EliminationImgParm);
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        final FrameLayout.LayoutParams checkmarkParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        checkmarkParm.setMargins(DpToPixels(0), DpToPixels(0), DpToPixels(0), DpToPixels(0));
+
+
+        final FrameLayout.LayoutParams notcheckmarkParm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        notcheckmarkParm.setMargins(DpToPixels(1), DpToPixels(1), DpToPixels(1), DpToPixels(1));
+
+
+        /** -------------------------------------------------------------------------- */
+
 
       final Button unrankedLeagueCreateBtn = (Button) findViewById(R.id.unrankedLeagueCreateBtn);
         final Button rankedLeagueCreateBtn = (Button) findViewById(R.id.rankedLeagueCreateBtn);
@@ -63,13 +91,13 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(getApplicationContext(), "NIGGA LEFT", Toast.LENGTH_LONG).show();
-               // unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
-                unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 	40, 150, 0));
+                // unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
+                unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
 
-               // rankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
+                // rankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
 
-             //   rankedLeagueCreateBtn.setBackgroundResource(R.drawable.outline);
+                //   rankedLeagueCreateBtn.setBackgroundResource(R.drawable.outline);
 
             }
         });
@@ -79,23 +107,43 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(getApplicationContext(), "NIGGA", Toast.LENGTH_LONG).show();
-              //  rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
-          //      unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
+                //  rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
+                //      unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
 
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
                 unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
 
-             //   unrankedLeagueCreateBtn.setBackgroundResource(R.drawable.outline);
 
 
             }
         });
+
+
+
+        /** /////////////////////////////////////////////////////////////////////////*/
+
+        /**              Comp type select listeners             */
+
+
 
         LinearLayout roundRobinBtn = (LinearLayout) findViewById(R.id.roundRobinBtn);
         roundRobinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Round Robin", Toast.LENGTH_SHORT).show();
+
+                if (getActiveCheckMark() == 0) {
+
+
+                } else {
+                    RoundRobinImg.setLayoutParams(checkmarkParm);
+                    RoundRobinImg.setImageResource(R.drawable.checkmark);
+
+                    EliminationImg.setLayoutParams(notcheckmarkParm);
+                    EliminationImg.setImageResource(R.drawable.notcheckmark);
+
+                }
+
             }
         });
 
@@ -105,6 +153,9 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Elim", Toast.LENGTH_SHORT).show();
+
+                EliminationImg.setLayoutParams(checkmarkParm);
+                EliminationImg.setImageResource(R.drawable.checkmark);
             }
         });
 
@@ -112,19 +163,33 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
-        /** shit for layout margin via JAVA code **/
-
-        ImageView RoundRobinImg = (ImageView) findViewById(R.id.EliminationImg);
 
 
-        FrameLayout.LayoutParams parm = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        parm.setMargins(DpToPixels(2), DpToPixels(2),DpToPixels(2), DpToPixels(7));
 
-        RoundRobinImg.setLayoutParams(parm);
+        RoundRobinImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        // layout.addview()
 
-        // or  this.setLayoutParams(lp);
+            }
+        });
+
+
+
+
+
+
+        EliminationImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+/** .setMargins(DpToPixels(1), DpToPixels(1), DpToPixels(1), DpToPixels(1));        FOR NOT CHECKMARK*/
+
+        /** /setMargins(DpToPixels(0), DpToPixels(0), DpToPixels(0), DpToPixels(0));        FOR CHECKMARK*/
 
     }
 
@@ -133,5 +198,19 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
+
+    public int getActiveCheckMark() {
+
+       return activeCheckMark;
+
+    }
+
+
+    public void setActiveCheckMark(int pos) {
+
+        activeCheckMark = pos;
+
+    }
+
 
 }
