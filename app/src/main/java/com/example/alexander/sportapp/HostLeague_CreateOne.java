@@ -141,6 +141,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                     EliminationImg.setLayoutParams(notcheckmarkParm);
                     EliminationImg.setImageResource(R.drawable.notcheckmark);
+                    setActiveCheckMark(0);
 
                 }
 
@@ -154,8 +155,14 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Elim", Toast.LENGTH_SHORT).show();
 
+
+                RoundRobinImg.setLayoutParams(notcheckmarkParm);
+                RoundRobinImg.setImageResource(R.drawable.notcheckmark);
+
                 EliminationImg.setLayoutParams(checkmarkParm);
                 EliminationImg.setImageResource(R.drawable.checkmark);
+                setActiveCheckMark(1);
+
             }
         });
 
