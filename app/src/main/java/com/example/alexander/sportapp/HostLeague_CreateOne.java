@@ -50,7 +50,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         edit.putString("leagueName", "");
         edit.putString("sport", "");
         edit.putString("rankSystem", "unranked");
-
+        edit.putBoolean("skipToLeague", false);
 
 
 
@@ -70,13 +70,22 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         createLeagueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   Toast.makeText(getApplicationContext(), "CREATE EVENT", Toast.LENGTH_LONG).show();
+                //   Toast.makeText(getApplicationContext(), "CREATE EVENT", Toast.LENGTH_LONG).show();
 
-                if (selectedLeagueTypeBoolean && selectedSportBoolean){
+                if (selectedLeagueTypeBoolean && selectedSportBoolean) {
 
-                    if (LeagueNameEditText.getText().toString().length() > 3){
+                    if (LeagueNameEditText.getText().toString().length() > 3) {
 
-                        edit.putString("leagueName", "");
+                        edit.putBoolean("skipToLeague", true);
+                        edit.putString("leagueName", LeagueNameEditText.getText().toString());
+
+                        edit.commit();
+
+                        Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
+                        finish();
+                        startActivity(intent);
+
+
 
                     } else {
                         Toast.makeText(getApplicationContext(), "League Name cant be under 4 letters", Toast.LENGTH_LONG).show();
@@ -106,7 +115,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
         selectedSportBoolean = true;
 
-          spinnerLeagueCreateSport.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener(){
+          spinnerLeagueCreateSport.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
               @Override
               public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
@@ -184,11 +193,11 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Round Robin", Toast.LENGTH_SHORT).show();
 
-                    RoundRobinImg.setImageResource(R.drawable.checkmark);
-                    EliminationImg.setImageResource(0);
-                    divisionImg.setImageResource(0);
-                    manualImg.setImageResource(0);
-                   selectedLeagueType = "RoundRobin";
+                RoundRobinImg.setImageResource(R.drawable.checkmark);
+                EliminationImg.setImageResource(0);
+                divisionImg.setImageResource(0);
+                manualImg.setImageResource(0);
+                selectedLeagueType = "RoundRobin";
                 selectedLeagueTypeBoolean = true;
 
             }

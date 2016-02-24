@@ -36,6 +36,9 @@ Boolean pickupSelected = true;
 
      ViewPager vPager;
 
+    SharedPreferences CreateLeague;
+    SharedPreferences.Editor edit;
+
     PagerAdapter vPagerAdapter;
 
     @Override
@@ -47,6 +50,11 @@ Boolean pickupSelected = true;
         SharedPreferences.Editor sfedit = sf.edit();
 
 
+
+        CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+        edit = CreateLeague.edit();
+
+    Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.contains("skipToLeague")), Toast.LENGTH_LONG).show();
 
 
         TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
