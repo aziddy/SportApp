@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,10 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
     String selectedLeagueType = "";
   //  boolean
+  String[] data;
 
+    SharedPreferences CreateLeague;
+    SharedPreferences.Editor edit;
 
 
     @Override
@@ -35,8 +39,13 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // SHARED PREF
-        SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
-        SharedPreferences.Editor edit = CreateLeague.edit();
+        CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+        edit = CreateLeague.edit();
+        // Removing Values from previous League Creates
+        edit.putString("sport", "");
+        edit.putString("rankSystem", "unranked");
+
+
 
 
         final EditText LeagueNameEditText = (EditText) findViewById(R.id.LeagueNameEditText);
@@ -81,13 +90,29 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
-        String[] data = {"Soccer", "American Football", "BasketBall", "Baseball", "Squash"};
+        data = new String[] {"Soccer", "American Football", "BasketBall", "Baseball", "Squash"};
 
         ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         Spinner spinnerLeagueCreateSport = (Spinner) findViewById(R.id.spinnerLeagueCreateSport);
         spinnerLeagueCreateSport.setAdapter(aa);
+
+        selectedSportBoolean = true;
+
+          spinnerLeagueCreateSport.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener(){
+
+              @Override
+              public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                  edit.putString("sport", getSport(position));
+              }
+
+              @Override
+              public void onNothingSelected(AdapterView<?> arg0) {
+                  // TODO Auto-generated method stub
+              }
+
+          });
 
 
         /** INTIALIZE IMAGE CIRCLES IN COMP TYPE SELECT */
@@ -117,14 +142,10 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                edit.putString("rankSystem", "unranked");
                 Toast.makeText(getApplicationContext(), "NIGGA LEFT", Toast.LENGTH_LONG).show();
-                // unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
                 unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
-
-                // rankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
-
-                //   rankedLeagueCreateBtn.setBackgroundResource(R.drawable.outline);
 
             }
         });
@@ -133,14 +154,10 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                edit.putString("rankSystem", "ranked");
                 Toast.makeText(getApplicationContext(), "NIGGA", Toast.LENGTH_LONG).show();
-                //  rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
-                //      unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
-
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
                 unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
-
-
 
             }
         });
@@ -270,6 +287,11 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
     }
+
+
+     public String getSport(int position){
+            return data[position];
+     }
 
 
 }
