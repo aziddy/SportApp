@@ -1,8 +1,11 @@
 package com.example.alexander.sportapp;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class HostLeague_CreateOne extends AppCompatActivity {
 
@@ -42,6 +47,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
         edit = CreateLeague.edit();
         // Removing Values from previous League Creates
+        edit.putString("leagueName", "");
         edit.putString("sport", "");
         edit.putString("rankSystem", "unranked");
 
@@ -70,7 +76,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                     if (LeagueNameEditText.getText().toString().length() > 3){
 
-
+                        edit.putString("leagueName", "");
 
                     } else {
                         Toast.makeText(getApplicationContext(), "League Name cant be under 4 letters", Toast.LENGTH_LONG).show();
@@ -292,6 +298,54 @@ public class HostLeague_CreateOne extends AppCompatActivity {
      public String getSport(int position){
             return data[position];
      }
+
+
+
+    public void uploadLeagueToServer(String leagueName, String sport, String rankSystem) {
+
+        class UserLoginClass extends AsyncTask<String, Void, String> {
+
+            ProgressDialog loading;
+
+
+            @Override
+            protected void onPreExecute(){
+                loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT NIGGA", null, true, true);
+            }
+
+            @Override
+            protected String doInBackground(String... params){
+
+                RegisterUserClass rc = new RegisterUserClass();
+
+                HashMap<String,String> hm = new HashMap<String, String>();
+
+                hm.put("username", params[0]);
+                hm.put("password", params[1]);
+
+                return rc.sendPostRequest("a", hm);
+                //   return "21";
+            }
+
+            @Override
+            protected void onPostExecute(String s){
+                //    pd.dismiss();
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
+
+
+                    Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
+                    startActivity(intent);
+
+                }
+
+            }
+        }
+        new UserLoginClass().execute(leagueName, sport, rankSystem);
+
+    }
+
+
 
 
 }
