@@ -2,6 +2,7 @@ package com.example.alexander.sportapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,7 +46,10 @@ public class BaseMenu extends AppCompatActivity {
 
 
     BaseMenu () {
-
+        SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+        SharedPreferences.Editor edit = CreateLeague.edit();
+        edit.putBoolean("skipToLeague", false);
+        edit.commit();
 
 
 }
@@ -175,6 +179,9 @@ ImageView settings = (ImageView) findViewById(R.id.settingsMenu);
 
            @Override
            public void onClick(View view) {
+
+
+
            Intent intent = new Intent(BaseMenu.this, ManageMyPickups.class);
                startActivity(intent);
 

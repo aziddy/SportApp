@@ -55,6 +55,16 @@ Boolean pickupSelected = true;
         edit = CreateLeague.edit();
 
     Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.contains("skipToLeague")), Toast.LENGTH_LONG).show();
+        if (CreateLeague.contains("skipToLeague")){
+
+            Intent intent = new Intent(ManageMyPickups.this, ManageMyLeagues.class);
+            startActivity(intent);
+            edit.putBoolean("skipToLeague", false);
+            edit.commit();
+
+        }
+
+
 
 
         TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
