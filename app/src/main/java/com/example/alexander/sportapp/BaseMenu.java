@@ -46,10 +46,10 @@ public class BaseMenu extends AppCompatActivity {
 
 
     BaseMenu () {
-        SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
-        SharedPreferences.Editor edit = CreateLeague.edit();
-        edit.putBoolean("skipToLeague", false);
-        edit.commit();
+//     SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+    //   SharedPreferences.Editor edit = CreateLeague.edit();
+    //    edit.putBoolean("skipToLeague", false);
+     //   edit.apply();
 
 
 }
@@ -57,6 +57,12 @@ public class BaseMenu extends AppCompatActivity {
 
 
    public void ImplementBaseMenu() {
+
+       SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
+          SharedPreferences.Editor edit = CreateLeague.edit();
+          edit.putBoolean("skipToLeague", false);
+          edit.commit();
+       Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.getBoolean("skipToLeague", true)), Toast.LENGTH_LONG).show();
 
 
        final ImageView home = (ImageView) findViewById(R.id.homeMenu);
@@ -99,7 +105,7 @@ public class BaseMenu extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Toast.makeText(getApplication(), "yo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "yo man", Toast.LENGTH_SHORT).show();
 
 
             //    findhost_fab.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);

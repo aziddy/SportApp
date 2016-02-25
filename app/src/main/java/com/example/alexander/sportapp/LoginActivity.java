@@ -36,8 +36,7 @@ public class LoginActivity extends BaseMenu {
     EditText passwordLogin;
 
     public final static String LoginURL = "http://zidros.ca/pickupappuserlogin.php";
-
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
