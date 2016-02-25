@@ -99,7 +99,7 @@ public class BaseMenu extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Toast.makeText(getApplication(), "NIGGA", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "yo", Toast.LENGTH_SHORT).show();
 
 
             //    findhost_fab.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
@@ -223,7 +223,7 @@ public void ImplementCommendHostButton() {
         @Override
     public void onClick(View view){
 
-            Toast.makeText(BaseMenu.this, "wtf", Toast.LENGTH_LONG).show();
+            Toast.makeText(BaseMenu.this, "what the", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(BaseMenu.this, MapsActivity.class);
             startActivity(intent);
 
@@ -386,7 +386,7 @@ public void ImplementCommendHostButton() {
             if(image != null){
 
                 ImageViewDownloaderURL.setImageBitmap(image);
-                   Toast.makeText(BaseMenu.this, "NIGGA IT WORKED", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(BaseMenu.this, "IT WORKED", Toast.LENGTH_SHORT).show();
 
             } else {
 
