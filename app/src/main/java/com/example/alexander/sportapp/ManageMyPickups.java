@@ -54,13 +54,13 @@ Boolean pickupSelected = true;
         CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
         edit = CreateLeague.edit();
 
-     if (CreateLeague.getBoolean("skipToLeague", true)){
+     if (CreateLeague.getBoolean("skipToLeague", false )){
 
             Intent intent = new Intent(ManageMyPickups.this, ManageMyLeagues.class);
             startActivity(intent);
             edit.putBoolean("skipToLeague", false);
-            edit.commit();
-            Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.contains("skipToLeague")), Toast.LENGTH_LONG).show();
+            edit.apply();
+       //     Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.contains("skipToLeague")), Toast.LENGTH_LONG).show();
 
         }
 

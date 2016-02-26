@@ -79,7 +79,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
                         edit.putBoolean("skipToLeague", true);
                         edit.putString("leagueName", LeagueNameEditText.getText().toString());
 
-                        edit.commit();
+                        edit.apply();
 
                         Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
                         finish();

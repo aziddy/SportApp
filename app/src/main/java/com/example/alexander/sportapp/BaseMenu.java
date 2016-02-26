@@ -61,8 +61,8 @@ public class BaseMenu extends AppCompatActivity {
        SharedPreferences CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
           SharedPreferences.Editor edit = CreateLeague.edit();
           edit.putBoolean("skipToLeague", false);
-          edit.commit();
-       Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.getBoolean("skipToLeague", true)), Toast.LENGTH_LONG).show();
+          edit.apply();
+      // Toast.makeText(getApplicationContext(), Boolean.toString(CreateLeague.getBoolean("skipToLeague", true)), Toast.LENGTH_LONG).show();
 
 
        final ImageView home = (ImageView) findViewById(R.id.homeMenu);
