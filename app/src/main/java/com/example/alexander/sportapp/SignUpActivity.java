@@ -59,8 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-// REGISTER USER SHIT
-
+    // REGISTER USER SHIT
 
     public void registerUser () {
 
@@ -108,9 +107,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         }
 
-
-
-
     }
 
 
@@ -127,16 +123,12 @@ public class SignUpActivity extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
                 loading = ProgressDialog.show(SignUpActivity.this, "WAIT", null, true, true);
-
-
             }
 
             @Override
             protected String doInBackground(String... params) {
 
                 String result =  "nothing";
-
-
 
                 HashMap<String ,String> data = new HashMap<String, String>();
 
@@ -145,17 +137,9 @@ public class SignUpActivity extends AppCompatActivity {
                 data.put("email", params[2]);
                 // data.put("fullname",params[4]);
 
-
-
-
                 result = RUC.sendPostRequest(RegisterURL,data);
 
-
-
-
-
                 return result;
-
 
             }
 
@@ -175,6 +159,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         new SendPostReqAsyncTask().execute(Username, Password, Email, Fullname);
+
     }
 
 }
