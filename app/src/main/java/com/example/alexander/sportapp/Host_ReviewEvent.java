@@ -135,7 +135,7 @@ public class Host_ReviewEvent extends BaseMenu {
 
             @Override
             protected void onPreExecute(){
-                loading = ProgressDialog.show(Host_ReviewEvent.this, "WAIT NIGGA", null, true, true);
+                loading = ProgressDialog.show(Host_ReviewEvent.this, "WAIT", null, true, true);
             }
 
             @Override

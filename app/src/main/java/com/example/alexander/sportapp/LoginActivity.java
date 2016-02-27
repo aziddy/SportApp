@@ -183,7 +183,7 @@ public class LoginActivity extends BaseMenu {
 
                  @Override
                  protected void onPreExecute(){
-                     loading = ProgressDialog.show(LoginActivity.this, "WAIT NIGGA", null, true, true);
+                     loading = ProgressDialog.show(LoginActivity.this, "WAIT", null, true, true);
                  }
 
                  @Override

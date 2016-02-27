@@ -100,7 +100,7 @@ public class FindEventAdapter extends ArrayAdapter<FindEventData> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-         //   pb = ProgressDialog.show(getContext(), "WAIT NIGGA", null, true, true);
+         //   pb = ProgressDialog.show(getContext(), "WAIT", null, true, true);
         }
 
         @Override

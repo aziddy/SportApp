@@ -100,7 +100,7 @@ public class Host_PickSport extends AppCompatActivity {
 
                 casualHostBtnSelected = true;
                 competitiveHostBtnSelected = false;
-                Toast.makeText(getApplicationContext(), "NIGGA LEFT", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "LEFT", Toast.LENGTH_LONG).show();
                 casualHostBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
                 competitiveHostBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
                 competitiveHostBtn.setBackgroundResource(R.drawable.outline);
@@ -119,7 +119,7 @@ public class Host_PickSport extends AppCompatActivity {
 
                 casualHostBtnSelected = false;
                 competitiveHostBtnSelected = true;
-                Toast.makeText(getApplicationContext(), "NIGGA", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "RIGHT", Toast.LENGTH_LONG).show();
                 competitiveHostBtn.setBackgroundColor(Color.argb(255, 195, 195, 195));
                 casualHostBtn.setBackgroundColor(Color.argb(0, 195, 195, 195));
                 casualHostBtn.setBackgroundResource(R.drawable.outline);

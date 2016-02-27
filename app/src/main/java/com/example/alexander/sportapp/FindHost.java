@@ -31,7 +31,7 @@ public class FindHost extends BaseMenu {
              @Override
              public void onClick(View v) {
 
-                 Toast.makeText(getApplication(), "WHAT NO NIGGA HOST", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(getApplication(), "WHAT NO HOST", Toast.LENGTH_SHORT).show();
                  Intent intent = new Intent(FindHost.this, HostLeagueOrPickup.class);
                  startActivity(intent);
 

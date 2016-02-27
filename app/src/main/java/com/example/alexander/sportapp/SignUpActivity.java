@@ -23,6 +23,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText usernameSignup = null;
     EditText passwordSignup = null ;
     EditText emailSignup = null;
+    EditText fullnameSignUp = null;
 
 
     @Override
@@ -32,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
          usernameSignup = (EditText) findViewById(R.id.usernameSignUp);
+         fullnameSignUp = (EditText) findViewById(R.id.fullnameSignUp);
          passwordSignup = (EditText) findViewById(R.id.passwordSignUp);
          emailSignup = (EditText) findViewById(R.id.emailSignUp);
 
@@ -63,6 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void registerUser () {
 
         String username = usernameSignup.getText().toString();
+        String fullname = fullnameSignUp.getText().toString();
         String password = passwordSignup.getText().toString();
         String email = emailSignup.getText().toString();
 
@@ -101,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         } else {
 
-            register(username, password, email);
+            register(username, password, email, fullname);
 
         }
 
@@ -112,7 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-    public void register(String Username, String Password, String Email){
+    public void register(String Username, String Password, String Email, String Fullname){
         // class with network stuff
 
 
@@ -123,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(SignUpActivity.this, "WAIT NIGGA", null, true, true);
+                loading = ProgressDialog.show(SignUpActivity.this, "WAIT", null, true, true);
 
 
             }
@@ -140,6 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
                 data.put("username", params[0]);
                 data.put("password", params[1]);
                 data.put("email", params[2]);
+                // data.put("fullname",params[4]);
 
 
 
@@ -170,7 +174,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
 
-        new SendPostReqAsyncTask().execute(Username, Password, Email);
+        new SendPostReqAsyncTask().execute(Username, Password, Email, Fullname);
     }
 
 }

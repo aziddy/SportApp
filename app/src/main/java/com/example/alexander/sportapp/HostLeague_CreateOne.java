@@ -320,7 +320,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
             @Override
             protected void onPreExecute(){
-                loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT NIGGA", null, true, true);
+                loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT", null, true, true);
             }
 
             @Override

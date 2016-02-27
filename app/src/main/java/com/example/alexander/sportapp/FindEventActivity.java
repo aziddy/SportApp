@@ -40,7 +40,7 @@ public class FindEventActivity extends BaseMenu {
 
         for(int x = 0; x < items.length;x++){
 
-            items[x] = "Nigga" + x;
+            items[x] = "whoa" + x;
 
         }
 
