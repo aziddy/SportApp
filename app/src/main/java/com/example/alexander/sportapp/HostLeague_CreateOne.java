@@ -30,7 +30,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
     String selectedLeagueType = "";
   //  boolean
-  String[] data;
+    String[] data;
 
     SharedPreferences CreateLeague;
     SharedPreferences.Editor edit;
@@ -46,11 +46,13 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         // SHARED PREF
         CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
         edit = CreateLeague.edit();
+
         // Removing Values from previous League Creates
         edit.putString("leagueName", "");
         edit.putString("sport", "");
         edit.putString("rankSystem", "unranked");
         edit.putBoolean("skipToLeague", false);
+
 
 
 
@@ -101,8 +103,6 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         });
 
 
-        //LeagueNameEditText.check
-
 
 
         data = new String[] {"Soccer", "American Football", "BasketBall", "Baseball", "Squash"};
@@ -120,6 +120,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
               @Override
               public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
                   edit.putString("sport", getSport(position));
+                  Toast.makeText(getApplication(), getSport(position), Toast.LENGTH_SHORT).show();
               }
 
               @Override
@@ -158,7 +159,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
 
                 edit.putString("rankSystem", "unranked");
-                Toast.makeText(getApplicationContext(), "NIGGA LEFT", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "LEFT", Toast.LENGTH_LONG).show();
                 unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
 
@@ -170,7 +171,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             public void onClick(View v) {
 
                 edit.putString("rankSystem", "ranked");
-                Toast.makeText(getApplicationContext(), "NIGGA", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "RIGHT", Toast.LENGTH_LONG).show();
                 rankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 40, 150, 0));
                 unrankedLeagueCreateBtn.setBackgroundColor(Color.argb(255, 61, 193, 0));
 

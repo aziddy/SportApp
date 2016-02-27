@@ -101,8 +101,6 @@ public class FindEventAdapter extends ArrayAdapter<FindEventData> {
         protected void onPreExecute() {
             super.onPreExecute();
          //   pb = ProgressDialog.show(getContext(), "WAIT NIGGA", null, true, true);
-
-
         }
 
         @Override
@@ -177,7 +175,7 @@ public class FindEventAdapter extends ArrayAdapter<FindEventData> {
             if(image != null){
 
                 ImageViewDownloaderURL.setImageBitmap(image);
-               // Toast.makeText(this, "NIGGA IT WORKED", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
             } else {
 
