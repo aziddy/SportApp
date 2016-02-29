@@ -53,6 +53,9 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         edit.putString("rankSystem", "unranked");
         edit.putBoolean("skipToLeague", false);
 
+        /** need to set button for **/
+        edit.putBoolean("privateVAR", false);
+
 
 
 
@@ -80,7 +83,6 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                         edit.putBoolean("skipToLeague", true);
                         edit.putString("leagueName", LeagueNameEditText.getText().toString());
-
                         edit.apply();
 
                         Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
@@ -124,9 +126,8 @@ public class HostLeague_CreateOne extends AppCompatActivity {
               }
 
               @Override
-              public void onNothingSelected(AdapterView<?> arg0) {
-                  // TODO Auto-generated method stub
-              }
+              public void onNothingSelected(AdapterView<?> arg0) {}
+
 
           });
 
@@ -298,11 +299,6 @@ public class HostLeague_CreateOne extends AppCompatActivity {
     }
 
 
-    public void IfCanGoToNextPage(int whichPart) {
-
-
-
-    }
 
 
      public String getSport(int position){
@@ -311,7 +307,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
 
 
-    public void uploadLeagueToServer(String leagueName, String sport, String rankSystem) {
+    public void uploadLeagueToServer(String leagueName, String rankSystem, String sport, String leagueType, Boolean privateVAR , String hostusername) {
 
         class UserLoginClass extends AsyncTask<String, Void, String> {
 
@@ -320,7 +316,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
             @Override
             protected void onPreExecute(){
-                loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT", null, true, true);
+           //     loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT", null, true, true);
             }
 
             @Override
@@ -330,11 +326,16 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                 HashMap<String,String> hm = new HashMap<String, String>();
 
-                hm.put("username", params[0]);
-                hm.put("password", params[1]);
+                hm.put("leaguename", params[0]);
+                hm.put("ranksystem", params[1]);
+                hm.put("sport", params[2]);
+                hm.put("leaguetype", params[3]);
+                hm.put("private", params[4]);
+                hm.put("hostusername", params[5]);
 
-                return rc.sendPostRequest("a", hm);
-                //   return "21";
+
+                return rc.sendPostRequest("http://zidros.ca/sportappcreateleagueupload.php", hm);
+
             }
 
             @Override
@@ -343,7 +344,8 @@ public class HostLeague_CreateOne extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
                 if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
 
-
+                    edit.putBoolean("skipToLeague", true);
+                    edit.apply();
                     Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
                     startActivity(intent);
 
@@ -351,7 +353,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
             }
         }
-        new UserLoginClass().execute(leagueName, sport, rankSystem);
+        new UserLoginClass().execute(leagueName, rankSystem, sport, leagueType, Boolean.toString(privateVAR) , hostusername);
 
     }
 

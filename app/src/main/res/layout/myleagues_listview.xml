@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp" >
+
+        <FrameLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="55dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+            <TextView
+                android:text="My League"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:text="Next Match:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="27.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <View
+                    android:layout_gravity="right"
+                    android:layout_width="15dp"
+                    android:background="#070dca"
+                    android:layout_height="15dp"/>
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Hawks"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vs."
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leo Oscar"
+                    />
+
+                <View
+                    android:layout_marginLeft="4dp"
+                    android:layout_gravity="right"
+                    android:layout_width="15dp"
+                    android:background="#cab007"
+                    android:layout_height="15dp"/>
+            </LinearLayout>
+</LinearLayout>
+        </FrameLayout>
+
+
+
+
+      <View
+          android:layout_gravity="right"
+          android:layout_width="50dp"
+          android:background="#f3f3"
+          android:layout_height="match_parent"/>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>
