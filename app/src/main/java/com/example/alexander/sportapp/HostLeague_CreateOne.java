@@ -35,6 +35,8 @@ public class HostLeague_CreateOne extends AppCompatActivity {
     SharedPreferences CreateLeague;
     SharedPreferences.Editor edit;
 
+    SharedPreferences userClientInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,17 @@ public class HostLeague_CreateOne extends AppCompatActivity {
         CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
         edit = CreateLeague.edit();
 
+        userClientInfo = getSharedPreferences("StoredActiveUserDate", MODE_PRIVATE);
+
         // Removing Values from previous League Creates
         edit.putString("leagueName", "");
         edit.putString("sport", "");
         edit.putString("rankSystem", "unranked");
+        edit.putString("leagueType", "");
         edit.putBoolean("skipToLeague", false);
 
         /** need to set button for **/
-        edit.putBoolean("privateVAR", false);
+        edit.putBoolean("privateVAR", true);
 
 
 
@@ -70,7 +75,7 @@ public class HostLeague_CreateOne extends AppCompatActivity {
             }
         });
 
-        LinearLayout createLeagueBtn = (LinearLayout) findViewById(R.id.createLeagueBtn);
+        final LinearLayout createLeagueBtn = (LinearLayout) findViewById(R.id.createLeagueBtn);
 
         createLeagueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +86,18 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                     if (LeagueNameEditText.getText().toString().length() > 3) {
 
+                        edit.putString("leagueType", selectedLeagueType);
                         edit.putBoolean("skipToLeague", true);
                         edit.putString("leagueName", LeagueNameEditText.getText().toString());
                         edit.apply();
 
-                        Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
-                        finish();
-                        startActivity(intent);
+
+                       uploadLeagueToServer(CreateLeague.getString("leagueName", "noValue"), CreateLeague.getString("rankSystem", "noValue"), CreateLeague.getString("sport", "noValue"), CreateLeague.getString("leagueType", "noValue"), CreateLeague.getBoolean("privateVAR", true), userClientInfo.getString("username", "noValue"));
+
+
+                  //      Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
+                  //      finish();
+                   //     startActivity(intent);
 
 
 
@@ -346,8 +356,8 @@ public class HostLeague_CreateOne extends AppCompatActivity {
 
                     edit.putBoolean("skipToLeague", true);
                     edit.apply();
-                    Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
-                    startActivity(intent);
+               //     Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
+                //    startActivity(intent);
 
                 }
 

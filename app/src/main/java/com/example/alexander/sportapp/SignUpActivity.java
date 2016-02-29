@@ -83,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             if (password.charAt(x) == ' '){
                 containSpaces = true;
+                x = password.length();
 
             }
 
@@ -99,7 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (containSpaces) {
 
-            Toast.makeText(getApplicationContext(),"No spaces",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"No spaces allowed in Username, Password and Email",Toast.LENGTH_LONG).show();
 
         } else {
 
@@ -135,7 +136,7 @@ public class SignUpActivity extends AppCompatActivity {
                 data.put("username", params[0]);
                 data.put("password", params[1]);
                 data.put("email", params[2]);
-                // data.put("fullname",params[4]);
+                // data.put("fullname",params[3]);
 
                 result = RUC.sendPostRequest(RegisterURL,data);
 
