@@ -62,8 +62,10 @@ public class FindHost extends BaseMenu {
         leagueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FindHost.this, HostLeague_CreateOne.class);
-                startActivity(intent);
+            //    Intent intent = new Intent(FindHost.this, HostLeague_CreateOne.class);
+              //  startActivity(intent);
+
+                setContentView(R.layout.myleagues_listview);
             }
         });
 
