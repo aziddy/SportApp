@@ -11,7 +11,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="4dp"
         android:layout_width="match_parent"
-        android:layout_height="90dp" >
+        android:layout_height="120dp" >
 
         <FrameLayout
             android:layout_marginTop="10dp"
@@ -45,7 +45,7 @@
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
 
         <TextView
@@ -55,42 +55,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <View
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="right"
-            android:layout_width="15dp"
-            android:background="#070dca"
-            android:layout_height="15dp"/>
 
-        <TextView
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="The Hawks"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
 
-        <TextView
-            android:layout_marginLeft="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vs."
-            android:textStyle="bold"
-            />
+                <View
 
-        <TextView
-            android:layout_marginLeft="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Leo Oscar"
-            />
+                    android:layout_gravity="right"
+                    android:layout_width="15dp"
+                    android:background="#070dca"
+                    android:layout_height="15dp"/>
 
-        <View
-            android:layout_marginLeft="4dp"
-            android:layout_gravity="right"
-            android:layout_width="15dp"
-            android:background="#cab007"
-            android:layout_height="15dp"/>
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Hawks"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vs."
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:lines="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leo Oscarssssssssss"
+                    />
+
+                <View
+                    android:layout_marginLeft="4dp"
+                    android:layout_gravity="right"
+                    android:layout_width="15dp"
+                    android:background="#cab007"
+                    android:layout_height="15dp"/>
+
+                </LinearLayout>
+
+
+
+
     </LinearLayout>
 
     <LinearLayout
