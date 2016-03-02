@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -62,6 +63,8 @@ public class MyLeagueHostListViewAdapter extends ArrayAdapter<HostMyLeagueListVi
         teamOneNameText.setText(data.TeamName1);
         teamTwoNameText.setText(data.TeamName2);
 
+        getR("255,420,23,356");
+
 
 
 
@@ -80,5 +83,27 @@ public class MyLeagueHostListViewAdapter extends ArrayAdapter<HostMyLeagueListVi
            }
           return Integer.parseInt(result);
        }
+
+
+    public int getR (String a) {
+        String result = "";
+        int commaPass = 0;
+
+        for (int x = 0; x < a.length(); x++){
+            if(a.charAt(x) == ',' && !(commaPass == 1)) {
+                commaPass++;
+
+            } else if (a.charAt(x) == ',' && (commaPass == 1)){
+                x = a.length();
+
+            } else if (commaPass == 1) {
+                result = result + a.charAt(x);
+            }
+        }
+        Toast.makeText(getContext(), Integer.parseInt(result), Toast.LENGTH_LONG).show();
+        return Integer.parseInt(result);
+    }
+
+
 
 }
