@@ -202,7 +202,7 @@ public class LoginActivity extends BaseMenu {
 
                  @Override
                  protected void onPostExecute(String s){
-                 //    pd.dismiss();
+                    loading.dismiss();
                      Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
                      if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
 

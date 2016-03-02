@@ -1,7 +1,6 @@
 package com.example.alexander.sportapp;
 
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,10 +18,9 @@ import android.view.View;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import layout.ManageCompletedFragment;
-import layout.ManageCurrentFragment;
+
 
 
 

@@ -1,24 +1,25 @@
-package layout;
+package com.example.alexander.sportapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.alexander.sportapp.FindEventAdapter;
 import com.example.alexander.sportapp.FindEventData;
+import com.example.alexander.sportapp.HostMyLeagueListViewData;
 import com.example.alexander.sportapp.R;
 
 import java.util.ArrayList;
 
 
+/**
+ * Created by alexa on 3/1/2016.
+ */
 public class ManageCurrentFragment extends Fragment implements View.OnClickListener {
 
     public ManageCurrentFragment() {
@@ -38,7 +39,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
 
 
-/**------------------------ get which activity the fragment is in ----------------------------**/
+        /**------------------------ get which activity the fragment is in ----------------------------**/
 
         for (int x = (getActivity().toString().length())-1; x > -1; x--){
 
@@ -67,7 +68,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 x = -1;
             }
         }
-/** ----------------------------------------------------------------------------------------- **/
+        /** ----------------------------------------------------------------------------------------- **/
 
     }
 
@@ -90,8 +91,8 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         if(pickup){
 
             ListView listView = (ListView) view.findViewById(R.id.listView);
-        //    ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
-         //   listView.setAdapter(adp);
+            //    ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
+            //   listView.setAdapter(adp);
 
             ArrayList<FindEventData> arrayListData = new ArrayList<FindEventData>();
 
@@ -123,8 +124,14 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         if (league){
 
             ListView listView = (ListView) view.findViewById(R.id.listView);
-            ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataLeague);
-            listView.setAdapter(adp);
+
+            ArrayList<HostMyLeagueListViewData> data = new ArrayList<HostMyLeagueListViewData>();
+
+            data.add(new HostMyLeagueListViewData("Joojee League", "255,154,45,86", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "March 26th, 2016"));
+
+            MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), data);
+
+            listView.setAdapter(adapter);
 
 
         }
@@ -133,14 +140,14 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
 
-      //  Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
+        //  Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
 
 
 
 
 
 
-    //    clickBtn.setOnClickListener(this);
+        //    clickBtn.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return view;
@@ -150,16 +157,16 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-     /*   if(v.getId() == R.id.clickBtn1){
+         /*   if(v.getId() == R.id.clickBtn1){
 
-            Toast.makeText(getContext(), "wtf the FIRST worked", Toast.LENGTH_LONG).show();
-           // ViewGroup vg = (ViewGroup) getView();
-         //   vg.removeAllViews();
-         //   vg.addView(view);
+                Toast.makeText(getContext(), "wtf the FIRST worked", Toast.LENGTH_LONG).show();
+               // ViewGroup vg = (ViewGroup) getView();
+             //   vg.removeAllViews();
+             //   vg.addView(view);
 
 
-        }
-*/
+            }
+    */
     }
 
 }

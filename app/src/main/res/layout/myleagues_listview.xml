@@ -17,7 +17,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="55dp"
+            android:layout_marginRight="60dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 <LinearLayout
@@ -35,8 +35,11 @@
 
 
             <TextView
+                android:id="@+id/leagueNameText"
+                android:textColor="#000000"
                 android:text="My League"
-                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -51,7 +54,8 @@
         <TextView
 
             android:text="Next Match:"
-
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -62,21 +66,47 @@
                 android:orientation="horizontal"
                 >
 
-                <View
+                <LinearLayout
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
-                    android:layout_gravity="right"
+                <View
+                    android:id="@+id/teamOneColor"
+                    android:layout_gravity="right|center_vertical"
                     android:layout_width="15dp"
-                    android:background="#070dca"
+                    android:background="@drawable/roundteamcolorboxsmall"
                     android:layout_height="15dp"/>
 
                 <TextView
+                    android:id="@+id/teamOneNameText"
+                    android:textColor="#000000"
+                    android:layout_weight="1"
+                    android:singleLine="true"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The Hawksdddddddddddddd"
+                    />
+
+
+
+
+                        </LinearLayout>
+
+                <TextView
+                    android:textColor="#000000"
+                    android:lines="1"
                     android:layout_marginLeft="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="The Hawks"
+                    android:text="Vs."
+                    android:textStyle="bold"
                     />
-
+                <!--
                 <TextView
                     android:layout_marginLeft="4dp"
                     android:layout_width="wrap_content"
@@ -84,21 +114,36 @@
                     android:text="Vs."
                     android:textStyle="bold"
                     />
+                -->
+
+                <LinearLayout
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
                 <TextView
-                    android:lines="1"
+                    android:id="@+id/teamTwoNameText"
+                    android:textColor="#000000"
+                    android:singleLine="true"
                     android:layout_marginLeft="4dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Leo Oscarssssssssss"
+                    android:layout_weight="1"
+                    android:text="The Hawksdddddddddddddd"
                     />
 
+
                 <View
+                    android:id="@+id/teamTwoColor"
                     android:layout_marginLeft="4dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="right|center_vertical"
                     android:layout_width="15dp"
-                    android:background="#cab007"
-                    android:layout_height="15dp"/>
+                    android:background="@drawable/roundteamcolorboxsmall"
+                    android:layout_height="15dp"
+                    />
+</LinearLayout>
 
                 </LinearLayout>
 
@@ -114,6 +159,8 @@
         >
 
         <TextView
+            android:id="@+id/matchTime"
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4:15 PM"
@@ -121,6 +168,8 @@
 
 
         <TextView
+            android:id="@+id/matchDate"
+            android:textColor="#000000"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,6 +189,7 @@
 
 
       <View
+          android:id="@+id/LeagueColor"
           android:layout_gravity="right"
           android:layout_width="50dp"
           android:background="#f3f3"
