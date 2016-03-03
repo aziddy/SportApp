@@ -1,5 +1,8 @@
 package com.example.alexander.sportapp;
 
+import android.app.ProgressDialog;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import com.example.alexander.sportapp.HostMyLeagueListViewData;
 import com.example.alexander.sportapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -107,7 +111,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             }
 
-
             arrayListData.add(exampleData);
             arrayListData.add(exampleDataTwo);
 
@@ -115,39 +118,27 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             listView.setAdapter(adapter);
 
-
-
-
         }
 
-
         if (league){
+
+            SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
+          //  userClientInfo.getString("username", "noValue");
 
             ListView listView = (ListView) view.findViewById(R.id.listView);
 
             ArrayList<HostMyLeagueListViewData> data = new ArrayList<HostMyLeagueListViewData>();
 
-            data.add(new HostMyLeagueListViewData("Joojee League", "255,154,45,86", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "March 26th, 2016"));
+            data.add(new HostMyLeagueListViewData("Joojee League", "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "Wednesday, March 26th, 2016"));
 
             MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), data);
 
             listView.setAdapter(adapter);
 
+            getMyHostedLeagues(userClientInfo.getString("username", "noValue"));
 
         }
 
-
-
-
-
-        //  Button clickBtn = (Button) view.findViewById(R.id.clickBtn1);
-
-
-
-
-
-
-        //    clickBtn.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return view;
@@ -158,15 +149,62 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
 
          /*   if(v.getId() == R.id.clickBtn1){
-
                 Toast.makeText(getContext(), "wtf the FIRST worked", Toast.LENGTH_LONG).show();
                // ViewGroup vg = (ViewGroup) getView();
              //   vg.removeAllViews();
              //   vg.addView(view);
-
-
             }
     */
     }
+
+
+    public void getMyHostedLeagues(String hostusername) {
+
+        class UserLoginClass extends AsyncTask<String, Void, String> {
+
+            ProgressDialog loading;
+
+
+            @Override
+            protected void onPreExecute(){
+                //     loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT", null, true, true);
+            }
+
+            @Override
+            protected String doInBackground(String... params){
+
+                RegisterUserClass rc = new RegisterUserClass();
+
+                HashMap<String,String> hm = new HashMap<String, String>();
+
+                hm.put("hostusername", params[0]);
+
+
+                return rc.sendPostRequest("http://zidros.ca/sportappgetmyhostedleagues.php", hm);
+
+            }
+
+            @Override
+            protected void onPostExecute(String s){
+                //    pd.dismiss();
+
+                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
+
+
+                    //     Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
+                    //    startActivity(intent);
+
+                }
+
+            }
+        }
+        new UserLoginClass().execute(hostusername);
+
+    }
+
+
+
+
 
 }
