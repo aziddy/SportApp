@@ -45,7 +45,7 @@ public class ManageCompletedFragment extends Fragment implements View.OnClickLis
 
                     }
                 }
-                Toast.makeText(getActivity(), activityName, Toast.LENGTH_LONG).show();
+
 
                 if (activityName.equals("ManageMyPickups")) {
                     pickup = true;
@@ -88,8 +88,6 @@ public class ManageCompletedFragment extends Fragment implements View.OnClickLis
             ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataLeague);
             listView.setAdapter(adp);
         }
-
-
 
         Button clickBtn = (Button) view.findViewById(R.id.clickBtn);
 

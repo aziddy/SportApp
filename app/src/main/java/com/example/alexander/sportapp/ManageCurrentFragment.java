@@ -59,7 +59,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                     }
                 }
-                Toast.makeText(getActivity(), activityName, Toast.LENGTH_LONG).show();
+
 
                 if (activityName.equals("ManageMyPickups")) {
                     pickup = true;
