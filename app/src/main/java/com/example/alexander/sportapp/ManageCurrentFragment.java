@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alexander.sportapp.FindEventAdapter;
@@ -30,6 +31,9 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         // Required empty public constructor
 
     }
+
+    TextView daText;
+    TextView daText2;
 
     LayoutInflater inflater;
     ViewGroup container;
@@ -93,7 +97,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
         if(pickup){
-
+/*
             ListView listView = (ListView) view.findViewById(R.id.listView);
             //    ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, dataPickup);
             //   listView.setAdapter(adp);
@@ -117,12 +121,13 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
             FindEventAdapter adapter = new FindEventAdapter(getContext(),arrayListData);
 
             listView.setAdapter(adapter);
-
+*/
         }
 
         if (league){
 
             SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
+/*
           //  userClientInfo.getString("username", "noValue");
 
             ListView listView = (ListView) view.findViewById(R.id.listView);
@@ -134,6 +139,11 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
             MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), data);
 
             listView.setAdapter(adapter);
+*/
+
+            daText2 = (TextView) view.findViewById(R.id.daText2);
+
+            daText = (TextView) view.findViewById(R.id.daText);
 
             getMyHostedLeagues(userClientInfo.getString("username", "noValue"));
 
@@ -186,9 +196,81 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             @Override
             protected void onPostExecute(String s){
-                //    pd.dismiss();
 
-                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+
+                boolean one = false;
+                boolean two = false;
+                int LeagueIterator = -1;
+                int ElementIterator = -1;
+
+                ArrayList<HostMyLeagueListViewData> ListViewData = new ArrayList<HostMyLeagueListViewData>();
+
+
+                // remove later
+                boolean start = true;
+                boolean getNumberOfElementsPerArray = false;
+
+                String temp = "";
+
+                boolean collect = false;
+                String yo = "";
+                     for (int x = 0; x < (s.length()-1); x++){
+
+
+
+
+                         if (s.charAt(x) == '%' && !two && !start){
+                              collect = false;
+                              one = true;
+
+                             // remove later
+                             getNumberOfElementsPerArray = false;
+
+
+                             // remove later
+                         } else if (getNumberOfElementsPerArray) {
+
+                             temp += s.charAt(x);
+
+                         }
+
+
+                        // remove later
+                         if (s.charAt(x) == '%' && start){
+
+                             start = false;
+                             getNumberOfElementsPerArray = true;
+                         }
+
+
+
+
+                         if (s.charAt(x) == 'I' && one){
+                             one = false;
+                             two = true;
+
+                         }
+
+                         if (s.charAt(x) == '%' && two){
+
+                             two = false;
+                             collect = true;
+                             LeagueIterator++;
+
+                         } else if (collect) {
+
+                             if (LeagueIterator == 0){
+
+
+
+                             yo += s.charAt(x);
+                             }
+                         }
+
+                     }
+
+                daText2.setText(temp);
+               // daText.setText(s);
                 if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
 
 
