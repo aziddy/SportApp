@@ -20,6 +20,7 @@ import com.example.alexander.sportapp.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -210,16 +211,44 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 boolean start = true;
                 boolean getNumberOfElementsPerArray = false;
 
+                String[] elementValues = new String[21];
+                int elementIterator = 0;
+
+                boolean inBetween = false;
+
+
                 String temp = "";
+
+
+                String NumberOfElementsPerArray = "";
 
                 boolean collect = false;
                 String yo = "";
                      for (int x = 0; x < (s.length()-1); x++){
 
 
+                         if( s.charAt(x) == '%' && !two && inBetween) {
 
 
-                         if (s.charAt(x) == '%' && !two && !start){
+
+                             elementValues[elementIterator-1] = temp;
+
+                             ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", elementValues[5]));
+
+                             temp = "";
+                             collect = false;
+                             one = true;
+                             elementIterator = 0;
+
+                         } else if (s.charAt(x) == '%' && !two && !start && !inBetween){
+                            // elementIterator = 0;
+                             if (NumberOfElementsPerArray.length() > 0){
+                                 getNumberOfElementsPerArray = false;
+                                 elementValues = new String[Integer.parseInt(NumberOfElementsPerArray)];
+                                 NumberOfElementsPerArray = "";
+
+                             }
+
                               collect = false;
                               one = true;
 
@@ -230,7 +259,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              // remove later
                          } else if (getNumberOfElementsPerArray) {
 
-                             temp += s.charAt(x);
+                             NumberOfElementsPerArray += s.charAt(x);
 
                          }
 
@@ -253,23 +282,47 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                          if (s.charAt(x) == '%' && two){
 
+                             inBetween = true;
                              two = false;
                              collect = true;
                              LeagueIterator++;
 
                          } else if (collect) {
 
+
+                             if (s.charAt(x) == ','){
+
+                                 elementValues[elementIterator] = temp;
+                                 temp = "";
+                                 elementIterator++;
+
+                             } else {
+
+                                 temp += s.charAt(x);
+
+                             }
+
+
                              if (LeagueIterator == 0){
 
 
-
-                             yo += s.charAt(x);
                              }
                          }
 
                      }
 
-                daText2.setText(temp);
+            String da = "";
+
+                for (int r = 0; r < ListViewData.size(); r++){
+
+                    da +=  ListViewData.get(r).MatchDate;
+                    da += ",";
+
+                }
+               // daText2.setText(elementValues[5]);
+                daText2.setText(da);
+              //  daText2.setText(Integer.toString(elementValues.length));
+               // daText2.setText(NumberOfElementsPerArray);
                // daText.setText(s);
                 if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
 
