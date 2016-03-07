@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.renderscript.Element;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -231,9 +232,9 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
 
-                             elementValues[elementIterator-1] = temp;
+                             elementValues[elementIterator] = temp;
 
-                             ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", elementValues[5]));
+                             ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5] ));
 
                              temp = "";
                              collect = false;
@@ -303,22 +304,40 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              }
 
 
-                             if (LeagueIterator == 0){
 
-
-                             }
                          }
 
                      }
 
             String da = "";
 
+
+                da += ListViewData.get(0).LeagueName;
+                da += ", ";
+                da += ListViewData.get(0).RankSystem;
+                da += ", ";
+                da += ListViewData.get(0).Sport;
+                da += ", ";
+                da += ListViewData.get(0).Leaguetype;
+                da += ", ";
+                da += ListViewData.get(0).Private;
+                da += ", ";
+                da += ListViewData.get(0).HostUserName;
+
+
+         //       da = Integer.toString(elementValues.length);
+
+
+                //da +=
+
+/*
                 for (int r = 0; r < ListViewData.size(); r++){
 
                     da +=  ListViewData.get(r).MatchDate;
                     da += ",";
 
                 }
+                */
                // daText2.setText(elementValues[5]);
                 daText2.setText(da);
               //  daText2.setText(Integer.toString(elementValues.length));
