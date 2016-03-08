@@ -15,7 +15,7 @@ public class ServerDataReceive {
 
     String URL = "";
     String dataType = "";
-    ArrayList<ArrayList<?>> arrayList;
+    ArrayList arrayList = new ArrayList();
 
 
     ServerDataReceive(ArrayList<String[]> arrayDataToPutInDataType, String dataType, String URL) {
@@ -99,7 +99,16 @@ public class ServerDataReceive {
 
                         elementValues[elementIterator] = temp;
 
-                        ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5] ));
+                        if(dataType == "HostMyLeagueListViewData") {
+
+                            // 6 elements
+                            ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5]));
+
+                        } else {
+
+
+
+                        }
 
                         temp = "";
                         collect = false;
@@ -224,15 +233,7 @@ public class ServerDataReceive {
 
 
 
-      public void HostMyLeagueListViewDataMETHOD(String[] ElementValues){
 
-
-
-
-
-
-
-      }
 
 
 
