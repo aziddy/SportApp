@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,15 +18,13 @@ public class ServerDataReceive {
     String dataType = "";
     ArrayList arrayList = new ArrayList();
 
+    private ArrayList RESULT = new ArrayList();
+//    private String RESULT = "";
 
     ServerDataReceive(ArrayList<String[]> arrayDataToPutInDataType, String dataType, String URL) {
 
         this.URL = URL;
         this.dataType = dataType;
-
-
-
-
 
     }
 
@@ -34,8 +33,8 @@ public class ServerDataReceive {
 
 
 
-
-    public void AsyncGetServerData(String hostusername) {
+    public void AsyncGetServerData(String... put) {
+ //   public void AsyncGetServerData(String hostusername) {
 
         class AsyncGetServerDataClass extends AsyncTask<String, Void, String> {
 
@@ -48,13 +47,13 @@ public class ServerDataReceive {
             }
 
             @Override
-            protected String doInBackground(String... params){
+            protected String doInBackground(String[] put2){
 
                 RegisterUserClass rc = new RegisterUserClass();
 
                 HashMap<String,String> hm = new HashMap<String, String>();
 
-                hm.put("hostusername", params[0]);
+                hm.put("hostusername", put2[0]);
 
 
                 return rc.sendPostRequest(URL, hm);
@@ -64,13 +63,18 @@ public class ServerDataReceive {
             @Override
             protected void onPostExecute(String s){
 
+                ArrayList<String[]> StringArrayTempData = new ArrayList<>();
+
+
 
                 boolean one = false;
                 boolean two = false;
                 int LeagueIterator = -1;
                 int ElementIterator = -1;
 
-                ArrayList<HostMyLeagueListViewData> ListViewData = new ArrayList<HostMyLeagueListViewData>();
+                ArrayList<String[]> ListViewData = new ArrayList<>();
+
+               // ArrayList<String[]>[][] ListViewData = new ArrayList[0][0];
 
 
                 // remove later
@@ -90,17 +94,18 @@ public class ServerDataReceive {
 
                 boolean collect = false;
                 String yo = "";
+
                 for (int x = 0; x < (s.length()-1); x++){
 
-
+                    // put elements into bigger array
                     if( s.charAt(x) == '%' && !two && inBetween) {
-
-
 
                         elementValues[elementIterator] = temp;
 
+                        StringArrayTempData.add(elementValues);
 
-                        putDataIn(elementValues, dataType);
+
+                     //   putDataIn(StringArrayTempData, dataType);
 
 
 
@@ -179,8 +184,9 @@ public class ServerDataReceive {
                 }
 
                 String da = "";
-
-
+                putDataIn(StringArrayTempData, dataType);
+           //     RESULT = "a";
+/*
                 da += ListViewData.get(0).LeagueName;
                 da += ", ";
                 da += ListViewData.get(0).RankSystem;
@@ -192,7 +198,7 @@ public class ServerDataReceive {
                 da += ListViewData.get(0).Private;
                 da += ", ";
                 da += ListViewData.get(0).HostUserName;
-
+*/
 
                 //       da = Integer.toString(elementValues.length);
 
@@ -222,15 +228,27 @@ public class ServerDataReceive {
 
             }
         }
-        new AsyncGetServerDataClass().execute(hostusername);
+
+
+
+        new AsyncGetServerDataClass().execute(put);
 
     }
 
 
 
-      public void putDataIn(String[] elementValues, String dataTypeIn){
+      public void putDataIn(ArrayList<String[]> elementValuesArray, String dataTypeIn){
 
-          if (dataTypeIn == ""){
+          if (dataTypeIn == "HostMyLeagueListViewData"){
+
+
+              for (int x = 0; x < (elementValuesArray.size()-1); x++) {
+
+                  for (int y = 0; y < (elementValuesArray.get(x).length-1); x++){
+
+                  }
+
+              }
 
 
           }
