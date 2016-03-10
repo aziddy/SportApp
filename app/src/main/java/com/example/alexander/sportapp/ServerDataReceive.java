@@ -2,9 +2,7 @@ package com.example.alexander.sportapp;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,7 +19,7 @@ public class ServerDataReceive {
     private ArrayList RESULT = new ArrayList();
 //    private String RESULT = "";
 
-    ServerDataReceive(ArrayList<String[]> arrayDataToPutInDataType, String dataType, String URL) {
+    ServerDataReceive(String dataType, String URL) {
 
         this.URL = URL;
         this.dataType = dataType;
@@ -105,7 +103,7 @@ public class ServerDataReceive {
                         StringArrayTempData.add(elementValues);
 
 
-                     //   putDataIn(StringArrayTempData, dataType);
+                   //     putDataInArrayList(StringArrayTempData, dataType);
 
 
 
@@ -184,7 +182,7 @@ public class ServerDataReceive {
                 }
 
                 String da = "";
-                putDataIn(StringArrayTempData, dataType);
+                HostMyLeagueListViewDataMethod(StringArrayTempData, dataType);
            //     RESULT = "a";
 /*
                 da += ListViewData.get(0).LeagueName;
@@ -237,25 +235,36 @@ public class ServerDataReceive {
 
 
 
-      public void putDataIn(ArrayList<String[]> elementValuesArray, String dataTypeIn){
+      public void putDataInArrayList(ArrayList<String[]> elementValuesArray, String dataTypeIn){
 
           if (dataTypeIn == "HostMyLeagueListViewData"){
 
 
-              for (int x = 0; x < (elementValuesArray.size()-1); x++) {
 
-                  for (int y = 0; y < (elementValuesArray.get(x).length-1); x++){
 
-                  }
 
-              }
 
 
           }
 
-
-
       }
+
+
+
+    public ArrayList<HostMyLeagueListViewData> HostMyLeagueListViewDataMethod(ArrayList<String[]> elementValuesArray, String dataTypeIn){
+
+        ArrayList<HostMyLeagueListViewData> al = new ArrayList<>();
+
+        for (int x = 0; x < (elementValuesArray.size()-1); x++) {
+
+
+
+        }
+
+        return al;
+    }
+
+
 
 
 

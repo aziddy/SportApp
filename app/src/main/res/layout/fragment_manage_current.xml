@@ -12,25 +12,25 @@
         android:orientation="vertical"
         >
 
-      <!--  <ListView
+     <ListView
             android:layout_marginTop="3dp"
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/> -->
-
-        <TextView
-            android:id="@+id/daText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:id="@+id/daText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+            android:layout_height="match_parent"/>
+        <!--
+              <TextView
+                  android:id="@+id/daText"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" />
 
 
+              <TextView
+                  android:id="@+id/daText2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" />
+      -->
+          </LinearLayout>
 
-</FrameLayout>
+
+
+      </FrameLayout>

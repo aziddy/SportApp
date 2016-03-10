@@ -37,8 +37,12 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     TextView daText;
     TextView daText2;
 
+     ListView listView;
+
     LayoutInflater inflater;
     ViewGroup container;
+
+    ArrayList<HostMyLeagueListViewData> ListViewDataParent = new ArrayList<HostMyLeagueListViewData>();
 
     String activityName = "";
     Boolean pickup = false;
@@ -129,25 +133,16 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         if (league){
 
             SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
-/*
-          //  userClientInfo.getString("username", "noValue");
 
-            ListView listView = (ListView) view.findViewById(R.id.listView);
+            listView = (ListView) view.findViewById(R.id.listView);
 
             ArrayList<HostMyLeagueListViewData> data = new ArrayList<HostMyLeagueListViewData>();
 
-            data.add(new HostMyLeagueListViewData("Joojee League", "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "Wednesday, March 26th, 2016"));
-
-            MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), data);
-
-            listView.setAdapter(adapter);
-*/
-
-            daText2 = (TextView) view.findViewById(R.id.daText2);
-
-            daText = (TextView) view.findViewById(R.id.daText);
+           // data.add(new HostMyLeagueListViewData("Joojee League", "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "Wednesday, March 26th, 2016", "", "","","",""));
 
             getMyHostedLeagues(userClientInfo.getString("username", "noValue"));
+
+
 
         }
 
@@ -159,15 +154,18 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
-         /*   if(v.getId() == R.id.clickBtn1){
-                Toast.makeText(getContext(), "wtf the FIRST worked", Toast.LENGTH_LONG).show();
-               // ViewGroup vg = (ViewGroup) getView();
-             //   vg.removeAllViews();
-             //   vg.addView(view);
-            }
-    */
     }
+
+
+
+
+    /**
+     *
+     *
+     *  GET LISTVIEW DATA STUFF BELOW
+     *
+     *
+     * */
 
 
     public void getMyHostedLeagues(String hostusername) {
@@ -202,10 +200,11 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                 boolean one = false;
                 boolean two = false;
-                int LeagueIterator = -1;
-                int ElementIterator = -1;
+
 
                 ArrayList<HostMyLeagueListViewData> ListViewData = new ArrayList<HostMyLeagueListViewData>();
+
+                /** 6 VALUES */
 
 
                 // remove later
@@ -217,9 +216,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                 boolean inBetween = false;
 
-
                 String temp = "";
-
 
                 String NumberOfElementsPerArray = "";
 
@@ -229,11 +226,10 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
                          if( s.charAt(x) == '%' && !two && inBetween) {
-
-
-
                              elementValues[elementIterator] = temp;
 
+                          //    String[] deleteTempElementValues = {elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5]};
+                           //    ListViewData.add(new HostMyLeagueListViewData(deleteTempElementValues));
                              ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5] ));
 
                              temp = "";
@@ -242,7 +238,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              elementIterator = 0;
 
                          } else if (s.charAt(x) == '%' && !two && !start && !inBetween){
-                            // elementIterator = 0;
                              if (NumberOfElementsPerArray.length() > 0){
                                  getNumberOfElementsPerArray = false;
                                  elementValues = new String[Integer.parseInt(NumberOfElementsPerArray)];
@@ -264,7 +259,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                          }
 
-
                         // remove later
                          if (s.charAt(x) == '%' && start){
 
@@ -272,13 +266,9 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              getNumberOfElementsPerArray = true;
                          }
 
-
-
-
                          if (s.charAt(x) == 'I' && one){
                              one = false;
                              two = true;
-
                          }
 
                          if (s.charAt(x) == '%' && two){
@@ -286,10 +276,9 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              inBetween = true;
                              two = false;
                              collect = true;
-                             LeagueIterator++;
+
 
                          } else if (collect) {
-
 
                              if (s.charAt(x) == ','){
 
@@ -311,19 +300,32 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             String da = "";
 
+/**
+                da += ListViewData.get(6).LeagueName;
+                da += ", ";
+                da += ListViewData.get(6).RankSystem;
+                da += ", ";
+                da += ListViewData.get(6).Sport;
+                da += ", ";
+                da += ListViewData.get(6).Leaguetype;
+                da += ", ";
+                da += ListViewData.get(6).Private;
+                da += ", ";
+                da += ListViewData.get(6).HostUserName;
 
-                da += ListViewData.get(0).LeagueName;
-                da += ", ";
-                da += ListViewData.get(0).RankSystem;
-                da += ", ";
-                da += ListViewData.get(0).Sport;
-                da += ", ";
-                da += ListViewData.get(0).Leaguetype;
-                da += ", ";
-                da += ListViewData.get(0).Private;
-                da += ", ";
-                da += ListViewData.get(0).HostUserName;
+**/
 
+                ListViewDataParent = ListViewData;
+
+
+             //   ArrayList<HostMyLeagueListViewData> data = new ArrayList<HostMyLeagueListViewData>();
+
+            //    data.add(new HostMyLeagueListViewData("Joojee League", "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "Wednesday, March 26th, 2016", "", "","","",""));
+//
+                MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), ListViewData);
+
+
+                listView.setAdapter(adapter);
 
          //       da = Integer.toString(elementValues.length);
 
@@ -339,7 +341,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 }
                 */
                // daText2.setText(elementValues[5]);
-                daText2.setText(da);
+           /**     daText2.setText(da); */
               //  daText2.setText(Integer.toString(elementValues.length));
                // daText2.setText(NumberOfElementsPerArray);
                // daText.setText(s);
