@@ -47,8 +47,6 @@ Boolean pickupSelected = true;
         SharedPreferences sf = getSharedPreferences("ManageMyEventsActivityFragmentData", MODE_PRIVATE);
         SharedPreferences.Editor sfedit = sf.edit();
 
-
-
         CreateLeague = getSharedPreferences("CreateLeague", MODE_PRIVATE);
         edit = CreateLeague.edit();
 
@@ -70,8 +68,8 @@ Boolean pickupSelected = true;
         tl.addTab(tl.newTab().setText("Completed"));
         tl.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final Button PickupBtn = (Button) findViewById(R.id.PickupBtn);
-        final Button LeagueBtn = (Button) findViewById(R.id.LeagueBtn);
+        final Button PickupBtn = (Button) findViewById(R.id.MatchesBtn);
+        final Button LeagueBtn = (Button) findViewById(R.id.TeamsBtn);
 
         LeagueBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
         PickupBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));

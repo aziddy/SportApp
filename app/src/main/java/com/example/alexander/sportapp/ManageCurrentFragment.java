@@ -1,6 +1,7 @@
 package com.example.alexander.sportapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -52,7 +54,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
 
-
         /**------------------------ get which activity the fragment is in ----------------------------**/
 
         for (int x = (getActivity().toString().length())-1; x > -1; x--){
@@ -73,9 +74,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                 if (activityName.equals("ManageMyPickups")) {
                     pickup = true;
-                }
-
-                if (activityName.equals("ManageMyLeagues")) {
+                } else if (activityName.equals("ManageMyLeagues")) {
                     league = true;
                 }
 
@@ -142,14 +141,23 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             getMyHostedLeagues(userClientInfo.getString("username", "noValue"));
 
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                      //  Toast.makeText(getActivity(), ListViewDataParent.get(position).HostUserName, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), ManageMyLeaguesMatches.class);
+                    startActivity(intent);
+
+
+                }
+            });
 
         }
-
-
         // Inflate the layout for this fragment
         return view;
     }
+
 
 
     @Override
@@ -251,7 +259,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                              // remove later
                              getNumberOfElementsPerArray = false;
 
-
                              // remove later
                          } else if (getNumberOfElementsPerArray) {
 
@@ -292,66 +299,15 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                              }
 
-
-
                          }
 
                      }
 
-            String da = "";
-
-/**
-                da += ListViewData.get(6).LeagueName;
-                da += ", ";
-                da += ListViewData.get(6).RankSystem;
-                da += ", ";
-                da += ListViewData.get(6).Sport;
-                da += ", ";
-                da += ListViewData.get(6).Leaguetype;
-                da += ", ";
-                da += ListViewData.get(6).Private;
-                da += ", ";
-                da += ListViewData.get(6).HostUserName;
-
-**/
-
                 ListViewDataParent = ListViewData;
 
-
-             //   ArrayList<HostMyLeagueListViewData> data = new ArrayList<HostMyLeagueListViewData>();
-
-            //    data.add(new HostMyLeagueListViewData("Joojee League", "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "Wednesday, March 26th, 2016", "", "","","",""));
-//
                 MyLeagueHostListViewAdapter adapter = new MyLeagueHostListViewAdapter(getContext(), ListViewData);
 
-
                 listView.setAdapter(adapter);
-
-         //       da = Integer.toString(elementValues.length);
-
-
-                //da +=
-
-/*
-                for (int r = 0; r < ListViewData.size(); r++){
-
-                    da +=  ListViewData.get(r).MatchDate;
-                    da += ",";
-
-                }
-                */
-               // daText2.setText(elementValues[5]);
-           /**     daText2.setText(da); */
-              //  daText2.setText(Integer.toString(elementValues.length));
-               // daText2.setText(NumberOfElementsPerArray);
-               // daText.setText(s);
-                if ((s.charAt(0) == 'S') && (s.charAt(1) == 'u')){
-
-
-                    //     Intent intent = new Intent(HostLeague_CreateOne.this, ManageMyPickups.class);
-                    //    startActivity(intent);
-
-                }
 
             }
         }

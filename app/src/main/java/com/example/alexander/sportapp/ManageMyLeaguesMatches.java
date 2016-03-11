@@ -17,7 +17,7 @@ import android.widget.Button;
 
 import layout.ManageCompletedFragment;
 
-public class ManageMyLeagues extends AppCompatActivity {
+public class ManageMyLeaguesMatches extends AppCompatActivity {
 
     Boolean pickupSelected = true;
     //  omfg
@@ -33,7 +33,7 @@ public class ManageMyLeagues extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(0, 0);
-        setContentView(R.layout.activity_manage_my_pickups);
+        setContentView(R.layout.activity_manage_my_leagues_matches);
         SharedPreferences sf = getSharedPreferences("ManageMyEventsActivityFragmentData", MODE_PRIVATE);
         SharedPreferences.Editor sfedit = sf.edit();
 
@@ -41,20 +41,24 @@ public class ManageMyLeagues extends AppCompatActivity {
 
 
         TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
-        tl.addTab(tl.newTab().setText("Current"));
+        tl.addTab(tl.newTab().setText("Scheduled"));
         tl.addTab(tl.newTab().setText("Completed"));
         tl.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final Button PickupBtn = (Button) findViewById(R.id.MatchesBtn);
-        final Button LeagueBtn = (Button) findViewById(R.id.TeamsBtn);
+        final Button MatchesBtn = (Button) findViewById(R.id.MatchesBtn);
+        final Button TeamsBtn = (Button) findViewById(R.id.TeamsBtn);
 
-        PickupBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
-        LeagueBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
-        PickupBtn.setTypeface(null, Typeface.NORMAL);
-        LeagueBtn.setTypeface(null, Typeface.BOLD);
+        MatchesBtn.setBackgroundColor(Color.argb(255, 206, 12, 116)); /** darker **/
+        TeamsBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
 
 
-        PickupBtn.setOnClickListener(new View.OnClickListener() {
+        MatchesBtn.setTypeface(null, Typeface.BOLD);
+        TeamsBtn.setTypeface(null, Typeface.NORMAL);
+       // MatchesBtn.setTypeface(null, Typeface.NORMAL);
+       // TeamsBtn.setTypeface(null, Typeface.BOLD);
+
+
+        MatchesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickupSelected = true;
@@ -68,14 +72,14 @@ public class ManageMyLeagues extends AppCompatActivity {
 
 
 
-        LeagueBtn.setOnClickListener(new View.OnClickListener() {
+        TeamsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickupSelected = false;
-                PickupBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
-                LeagueBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
-                PickupBtn.setTypeface(null, Typeface.NORMAL);
-                LeagueBtn.setTypeface(null, Typeface.BOLD);
+                MatchesBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
+                TeamsBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
+                MatchesBtn.setTypeface(null, Typeface.NORMAL);
+                TeamsBtn.setTypeface(null, Typeface.BOLD);
 
             }
         });
@@ -131,7 +135,7 @@ public class ManageMyLeagues extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-        //    Toast.makeText(ManageMyLeagues.this, Integer.toString(position), Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(ManageMyLeagues.this, Integer.toString(position), Toast.LENGTH_SHORT).show();
 
 
 
@@ -191,3 +195,4 @@ public class ManageMyLeagues extends AppCompatActivity {
         }
     }
 }
+

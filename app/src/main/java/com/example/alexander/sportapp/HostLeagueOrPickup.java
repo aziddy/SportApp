@@ -14,7 +14,7 @@ public class HostLeagueOrPickup extends AppCompatActivity {
         setContentView(R.layout.activity_host_league_or_pickup);
 
 
-        FrameLayout PickupBtn = (FrameLayout) findViewById(R.id.PickupBtn);
+        FrameLayout PickupBtn = (FrameLayout) findViewById(R.id.MatchesBtn);
 
         PickupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
