@@ -1,4 +1,6 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    android:id="@+id/frame"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,16 +9,19 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
      <ListView
+
             android:layout_marginTop="3dp"
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="300dp"
+         />
         <!--
               <TextView
                   android:id="@+id/daText"
@@ -30,6 +35,17 @@
                   android:layout_height="wrap_content" />
       -->
           </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottomRightFrame"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="28dp"
+        >
+
+    </FrameLayout>
 
 
 

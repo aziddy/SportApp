@@ -1,29 +1,31 @@
 package com.example.alexander.sportapp;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.renderscript.Element;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.alexander.sportapp.FindEventAdapter;
-import com.example.alexander.sportapp.FindEventData;
-import com.example.alexander.sportapp.HostMyLeagueListViewData;
-import com.example.alexander.sportapp.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 /**
@@ -49,6 +51,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     String activityName = "";
     Boolean pickup = false;
     Boolean league = false;
+    Boolean ManageMyLeaguesTeams = false;
 
 
     @Override
@@ -76,12 +79,17 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                     pickup = true;
                 } else if (activityName.equals("ManageMyLeagues")) {
                     league = true;
+                } else if (activityName.equals("ManageMyLeaguesTeams")){
+                    ManageMyLeaguesTeams = true;
                 }
 
                 x = -1;
             }
         }
         /** ----------------------------------------------------------------------------------------- **/
+
+
+
 
     }
 
@@ -100,6 +108,60 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         String [] dataPickup = {"pickup", "pickup2", "pickup3", "pickup4", "pickup5", "pickup2", "pickup2", "pickup2", "pickup2", "pickup2"};
         String [] dataLeague = {"League", "League2", "League3", "League4", "League5", "League2", "League2", "League2", "League2", "League2"};
 
+        if(ManageMyLeaguesTeams){
+
+
+            ListView.LayoutParams lvlp = new ListView.LayoutParams(1,1);
+
+            listView = (ListView) view.findViewById(R.id.listView);
+
+          //  listView.setLayoutParams(lvlp);
+
+
+
+/*
+            FrameLayout fl = new FrameLayout(getContext());
+            fl.setBackground(getResources().getDrawable(R.drawable.oval_green));
+            FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(200, 200);
+            fl.setLayoutParams(flp);
+*/
+
+
+
+           FrameLayout fl = (FrameLayout) view.findViewById(R.id.bottomRightFrame);
+         //   ll.setBackgroundColor(Color.argb(255,255,0,0));
+
+
+         //   LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+         //   ImageView iv = new ImageView(getContext());
+         //   iv.setImageResource(R.drawable.oval_green);
+
+               fl.setBackground(getResources().getDrawable(R.drawable.cross));
+
+      fl.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Toast.makeText(getContext(), "woah", Toast.LENGTH_SHORT).show();
+              Intent intent = new Intent(getActivity(), CreateNewTeamLeague.class);
+              startActivity(intent);
+          }
+      });
+
+          //  Button btn = new Button(getContext());
+
+
+        //    btn.setLayoutParams(params);
+
+          //  btn.setLayoutParams(new LayoutParams());
+
+
+          //  ll.addView(btn);
+
+
+          //  Toast.makeText(getContext(), "WORDKED", Toast.LENGTH_SHORT).show();
+
+        }
 
         if(pickup){
 /*
@@ -185,7 +247,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             @Override
             protected void onPreExecute(){
-                //     loading = ProgressDialog.show(HostLeague_CreateOne.this, "WAIT", null, true, true);
+                    loading = ProgressDialog.show(getActivity(), "WAIT", null, true, true);
             }
 
             @Override
@@ -309,14 +371,12 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                 listView.setAdapter(adapter);
 
+                loading.dismiss();
+
             }
         }
         new UserLoginClass().execute(hostusername);
 
     }
-
-
-
-
 
 }

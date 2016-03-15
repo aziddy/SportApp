@@ -16,4 +16,7 @@ android:background="@drawable/ripple_oval"
             <solid android:color="#f23fff" />
         </shape>
     </item>
+
+
+
 </layer-list>

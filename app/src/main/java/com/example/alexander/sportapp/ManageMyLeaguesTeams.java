@@ -1,6 +1,5 @@
 package com.example.alexander.sportapp;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -18,7 +17,7 @@ import android.widget.Button;
 
 import layout.ManageCompletedFragment;
 
-public class ManageMyLeaguesMatches extends AppCompatActivity {
+public class ManageMyLeaguesTeams extends AppCompatActivity {
 
     Boolean pickupSelected = true;
     //  omfg
@@ -38,32 +37,29 @@ public class ManageMyLeaguesMatches extends AppCompatActivity {
         SharedPreferences sf = getSharedPreferences("ManageMyEventsActivityFragmentData", MODE_PRIVATE);
         SharedPreferences.Editor sfedit = sf.edit();
 
-
-
-
         TabLayout tl = (TabLayout) findViewById(R.id.tab_layout);
-        tl.addTab(tl.newTab().setText("Scheduled"));
-        tl.addTab(tl.newTab().setText("Completed"));
+        tl.addTab(tl.newTab().setText("Teams"));
+        tl.addTab(tl.newTab().setText("Standings"));
         tl.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final Button MatchesBtn = (Button) findViewById(R.id.MatchesBtn);
         final Button TeamsBtn = (Button) findViewById(R.id.TeamsBtn);
 
-        MatchesBtn.setBackgroundColor(Color.argb(255, 206, 12, 116)); /** darker **/
-        TeamsBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
+        MatchesBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
+        TeamsBtn.setBackgroundColor(Color.argb(255, 206, 12, 116)); /** darker **/
 
-
-        MatchesBtn.setTypeface(null, Typeface.BOLD);
-        TeamsBtn.setTypeface(null, Typeface.NORMAL);
-       // MatchesBtn.setTypeface(null, Typeface.NORMAL);
-       // TeamsBtn.setTypeface(null, Typeface.BOLD);
+        MatchesBtn.setTypeface(null, Typeface.NORMAL);
+        TeamsBtn.setTypeface(null, Typeface.BOLD);
+        // MatchesBtn.setTypeface(null, Typeface.NORMAL);
+        // TeamsBtn.setTypeface(null, Typeface.BOLD);
 
 
         MatchesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pickupSelected = true;
-
+                finish();
+                overridePendingTransition(0, 0);
 
             }
         });
@@ -75,13 +71,11 @@ public class ManageMyLeaguesMatches extends AppCompatActivity {
         TeamsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickupSelected = false;/*
+                pickupSelected = false;
                 MatchesBtn.setBackgroundColor(Color.argb(255, 247, 10, 137));
                 TeamsBtn.setBackgroundColor(Color.argb(255, 206, 12, 116));
                 MatchesBtn.setTypeface(null, Typeface.NORMAL);
-                TeamsBtn.setTypeface(null, Typeface.BOLD); */
-                Intent intent = new Intent(getApplication(),ManageMyLeaguesTeams.class);
-                startActivity(intent);
+                TeamsBtn.setTypeface(null, Typeface.BOLD);
 
             }
         });

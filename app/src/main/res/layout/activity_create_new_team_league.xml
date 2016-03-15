@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alexander.sportapp.CreateNewTeamLeague">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:padding="15dp"
+        android:background="#3dc100"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginLeft="5.5dp"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Team Name"
+                />
+
+            <EditText
+                android:id="@+id/LeagueNameEditText"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Example: Squash"
+                android:textSize="30dp"
+                android:singleLine="true"
+                />
+
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20.5dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Teammates"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="0.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type Usernames"
+                android:textSize="20dp"
+                android:singleLine="true"
+                />
+
+            <Button
+                android:id="@+id/add"
+                android:hint="Add"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="0.8"
+                android:layout_marginRight="15dp"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
