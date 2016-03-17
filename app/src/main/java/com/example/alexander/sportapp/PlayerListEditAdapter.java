@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,10 @@ public class PlayerListEditAdapter extends ArrayAdapter<PlayerListEditData> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+      //  Object index = position
+
+
+
         PlayerListEditData pled = getItem(position);
 
         if (convertView == null) {
@@ -42,20 +47,25 @@ public class PlayerListEditAdapter extends ArrayAdapter<PlayerListEditData> {
         }
 
         TextView textView = (TextView) convertView.findViewById(R.id.textView);
-        ImageView removeBtn = (ImageView) convertView.findViewById(R.id.removeBtn);
+        final ImageView removeBtn = (ImageView) convertView.findViewById(R.id.removeBtn);
 
         textView.setText(pled.userName);
 
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 arrayList.remove(position);
+
+                remove(getItem(position));
+
             }
         });
 
         return convertView;
 
     }
+
+
+
 }
 
 

@@ -41,7 +41,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     public void onDateSet(DatePicker view, int year, int month, int day){
 
-
          view.setMinDate(System.currentTimeMillis() - 1000);
 
         SharedPreferences settings = getActivity().getSharedPreferences("passActivityToDatePickerData", getActivity().MODE_PRIVATE);
@@ -58,10 +57,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
 
         }
-
-
-
-
 
     }
 

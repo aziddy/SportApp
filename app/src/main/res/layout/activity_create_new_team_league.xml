@@ -92,7 +92,14 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="300dp"/>
+        <Button
+            android:id="@+id/testBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="test"
+            />
+
 
 
     </LinearLayout>
