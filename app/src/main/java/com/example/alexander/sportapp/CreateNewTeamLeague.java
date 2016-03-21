@@ -24,13 +24,24 @@ public class CreateNewTeamLeague extends AppCompatActivity {
     PlayerListEditAdapter pleAdapter;
     ArrayList<PlayerListEditData> data;
     SharedPreferences userClientInfo;
+    SharedPreferences sp;
+    SharedPreferences.Editor spe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_team_league);
 
-        et = (EditText) findViewById(R.id.editText);
+        sp = getSharedPreferences("UsernameFindToTeamCreate", MODE_PRIVATE);
+        spe = sp.edit();
+
+ /*       SharedPreferences.OnSharedPreferenceChangeListener spChange = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Toast.makeText(getApplicationContext(), "spChangeWork", Toast.LENGTH_SHORT).show();
+            }
+        }; */
+
 
         data = new ArrayList<PlayerListEditData>();
 
@@ -44,19 +55,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
         lv.setAdapter(pleAdapter);
 
-        Button addTeamMate = (Button) findViewById(R.id.add);
 
-        addTeamMate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                data.add(new PlayerListEditData(new String[]{et.getText().toString()}));
-                Toast.makeText(CreateNewTeamLeague.this, et.getText().toString(), Toast.LENGTH_SHORT).show();
-                pleAdapter = new PlayerListEditAdapter(getBaseContext(), data);
-                lv.setAdapter(pleAdapter);
-
-            }
-        });
 
         Button testBtn = (Button) findViewById(R.id.testBtn);
 
@@ -64,14 +63,26 @@ public class CreateNewTeamLeague extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateNewTeamLeague.this, UsernameFind.class);
-
-                startActivity(intent );
+                startActivity(intent);
             }
         });
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
 
+        if (sp.getString("usernameFindLast", "null") == "1") {
+            //  Toast.makeText(getApplicationContext(), "spChangeWork", Toast.LENGTH_SHORT).show();
+            data.add(new PlayerListEditData(new String[]{sp.getString("usernamet", "null")}));
+            pleAdapter = new PlayerListEditAdapter(getBaseContext(), data);
+            lv.setAdapter(pleAdapter);
+        }
+        spe.putString("usernameFindLast", "0");
+        spe.putString("usernamet", "nope");
+        spe.apply();
+    }
 
     public void uploadLeagueToServer(String leagueName, String rankSystem, String sport, String leagueType, Boolean privateVAR , String hostusername) {
 

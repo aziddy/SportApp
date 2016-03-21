@@ -298,8 +298,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                          if( s.charAt(x) == '%' && !two && inBetween) {
                              elementValues[elementIterator] = temp;
 
-                          //    String[] deleteTempElementValues = {elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5]};
-                           //    ListViewData.add(new HostMyLeagueListViewData(deleteTempElementValues));
                              ListViewData.add(new HostMyLeagueListViewData(elementValues[0], "255,000,255,0", "255,255,0,0", "255,0,0,255", "Meme Team", "The Jooj's", "4:16pm", "WEDNESDAY", elementValues[1], elementValues[2], elementValues[3], elementValues[4], elementValues[5] ));
 
                              temp = "";

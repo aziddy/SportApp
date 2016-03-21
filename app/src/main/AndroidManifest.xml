@@ -129,6 +129,7 @@
 
         <activity android:name=".UsernameFind"
         android:theme="@style/Theme.AppCompat.Dialog"
+            android:windowSoftInputMode="stateHidden"
             />
 
 

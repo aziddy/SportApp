@@ -10,21 +10,28 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
-        <AutoCompleteTextView
-            android:id="@+id/autocompletetextview"
-            android:hint="auto complete text view "
+        <TextView
+            android:textSize="20dp"
+            android:hint="Add Player"
+            android:textStyle="italic"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/editText"
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="WHAT"
         android:textAlignment="center"
         />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -33,17 +40,12 @@
 
         <Button
             android:id="@+id/cancelBtn"
-            android:layout_weight="0.5"
             android:hint="Cancel"
             android:layout_width="match_parent"
             android:layout_height="75dp" />
 
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_weight="0.5"
-            android:hint="Add"
-            android:layout_width="match_parent"
-            android:layout_height="75dp" />
+
+
 
     </LinearLayout>
     </LinearLayout>
