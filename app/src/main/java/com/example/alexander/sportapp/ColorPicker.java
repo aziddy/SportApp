@@ -20,14 +20,13 @@ public class ColorPicker extends Activity {
         gv = (GridView) findViewById(R.id.grid);
 
         ArrayList<String> data = new ArrayList<String>();
-        data.add("a");
-        data.add("b");
-        data.add("c");
-        data.add("d");
-        data.add("e");
-        data.add("f");
-        data.add("g");
-        data.add("h");
+        data.add("255,255,0,255");
+        data.add("255,255,0,0");
+        data.add("255,0,255,0");
+        data.add("255,0,0,255");
+        data.add("255,255,255,255");
+        data.add("255,55,0,55");
+
 
          ColorPickerAdapter adapter = new ColorPickerAdapter(getApplicationContext(), data);
        // ArrayAdapter<String> ap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, data);

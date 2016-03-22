@@ -30,7 +30,7 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         String data = getItem(position);
         CardView cardView;
 
-        int dp = 65;
+        int dp = 60;
         final float scale = getContext().getResources().getDisplayMetrics().density;
         int pixels = (int) (dp * scale + 0.5f);
 
@@ -40,8 +40,11 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         if(convertView == null){
 
             cardView = new CardView(getContext());
+
             cardView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
-            cardView.setBackgroundColor(Color.argb(255,255,0,255));
+           // cardView.setBackgroundColor(Color.argb(255,255,0,255));
+            cardView.setBackgroundColor(Color.argb(getAlpha(data),getR(data),getG(data),getB(data)));
+
         } else {
 
             cardView = (CardView) convertView;
