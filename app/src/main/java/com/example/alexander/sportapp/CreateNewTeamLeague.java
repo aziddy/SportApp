@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
     EditText et;
     ListView lv;
+    LinearLayout ll;
     PlayerListEditAdapter pleAdapter;
     ArrayList<PlayerListEditData> data;
     SharedPreferences userClientInfo;
@@ -41,6 +43,15 @@ public class CreateNewTeamLeague extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "spChangeWork", Toast.LENGTH_SHORT).show();
             }
         }; */
+
+         ll = (LinearLayout) findViewById(R.id.topBar);
+
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "TopBar", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         data = new ArrayList<PlayerListEditData>();
