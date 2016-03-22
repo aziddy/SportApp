@@ -49,7 +49,10 @@ public class CreateNewTeamLeague extends AppCompatActivity {
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "TopBar", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "TopBar", Toast.LENGTH_SHORT).show();
+              Intent intent = new Intent(getApplication(),ColorPicker.class);
+                startActivity(intent);
+
             }
         });
 
