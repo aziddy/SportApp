@@ -11,9 +11,7 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
-/**
- * Created by alexa on 3/21/2016.
- */
+
 public class ColorPickerAdapter extends ArrayAdapter<String> {
 
 
@@ -30,22 +28,39 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         String data = getItem(position);
+        CardView cardView;
+
+        int dp = 65;
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        int pixels = (int) (dp * scale + 0.5f);
+
+
+
 
         if(convertView == null){
 
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.color_picker_gridview_colorbox, parent, false);
+            cardView = new CardView(getContext());
+            cardView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
+            cardView.setBackgroundColor(Color.argb(255,255,0,255));
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.color_picker_gridview_colorbox, parent, false);
+
+        } else {
+
+            cardView = (CardView) convertView;
 
         }
 
+
+
   /** fix */
-       // CardView cv = convertView.findViewById(R.id.cv);
+    //    CardView cv = convertView.findViewById(R.id.cv);
 
 
 
 
 
 
-        return convertView;
+        return cardView;
 
     }
 
