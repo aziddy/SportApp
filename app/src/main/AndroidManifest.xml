@@ -126,13 +126,15 @@
         <activity
             android:name=".CreateNewTeamLeague"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UsernameFind"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name=".UsernameFind"
-        android:theme="@style/Theme.AppCompat.Dialog"
-            android:windowSoftInputMode="stateHidden"
+
+        <activity android:name=".ColorPicker"
+            android:theme="@style/Theme.AppCompat.Dialog"
             />
-
-
     </application>
 
 </manifest>
