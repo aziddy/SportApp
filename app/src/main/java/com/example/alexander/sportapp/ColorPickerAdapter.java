@@ -42,8 +42,6 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
             cardView = new CardView(getContext());
             cardView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
             cardView.setBackgroundColor(Color.argb(255,255,0,255));
-           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.color_picker_gridview_colorbox, parent, false);
-
         } else {
 
             cardView = (CardView) convertView;
