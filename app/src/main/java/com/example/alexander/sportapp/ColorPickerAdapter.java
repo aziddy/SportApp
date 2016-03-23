@@ -2,12 +2,14 @@ package com.example.alexander.sportapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,7 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
 
         String data = getItem(position);
         CardView cardView;
+        View view;
 
         int dp = 60;
         final float scale = getContext().getResources().getDisplayMetrics().density;
@@ -39,15 +42,25 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
 
         if(convertView == null){
 
-            cardView = new CardView(getContext());
+      //      cardView = new CardView(getContext());
 
-            cardView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
+       //     cardView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
            // cardView.setBackgroundColor(Color.argb(255,255,0,255));
-            cardView.setBackgroundColor(Color.argb(getAlpha(data),getR(data),getG(data),getB(data)));
+         //   cardView.setRadius(9);
+
+            view = new View(getContext());
+            view.setLayoutParams(new LinearLayout.LayoutParams(pixels, pixels));
+
+            GradientDrawable shape = new GradientDrawable();
+            shape.setCornerRadius(20);
+            shape.setColor(Color.argb(getAlpha(data),getR(data),getG(data),getB(data)));
+            view.setBackground(shape);
+         //   cardView.setBackgroundColor(Color.argb(getAlpha(data),getR(data),getG(data),getB(data)));
 
         } else {
 
-            cardView = (CardView) convertView;
+           // cardView = (CardView) convertView;
+            view = (View) convertView;
 
         }
 
@@ -61,8 +74,8 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
 
 
 
-        return cardView;
-
+        return view;
+        //return cardView;
     }
 
 

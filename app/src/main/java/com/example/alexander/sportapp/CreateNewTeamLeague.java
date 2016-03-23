@@ -29,6 +29,9 @@ public class CreateNewTeamLeague extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor spe;
 
+    SharedPreferences cpsp;
+    SharedPreferences.Editor cpspe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,9 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
         sp = getSharedPreferences("UsernameFindToTeamCreate", MODE_PRIVATE);
         spe = sp.edit();
+
+        cpsp = getSharedPreferences("ColorPickerToTeamCreate", MODE_PRIVATE);
+        cpspe = cpsp.edit();
 
  /*       SharedPreferences.OnSharedPreferenceChangeListener spChange = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
@@ -86,15 +92,28 @@ public class CreateNewTeamLeague extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-
-        if (sp.getString("usernameFindLast", "null") == "1") {
+     //   Toast.makeText(getApplicationContext(),  cpsp.getString("color", "0"), Toast.LENGTH_SHORT).show();
+    //    Toast.makeText(getApplicationContext(),  cpsp.getString("colorPickerLast", "nope"), Toast.LENGTH_SHORT).show();
+        if (sp.getString("usernameFindLast", "null").equals("1")) {
             //  Toast.makeText(getApplicationContext(), "spChangeWork", Toast.LENGTH_SHORT).show();
             data.add(new PlayerListEditData(new String[]{sp.getString("usernamet", "null")}));
             pleAdapter = new PlayerListEditAdapter(getBaseContext(), data);
             lv.setAdapter(pleAdapter);
         }
+
+        if (cpsp.getString("colorPickerLast", "0").equals("1")) {
+
+            // color code
+            Toast.makeText(getApplicationContext(),  cpsp.getString("color", "0"), Toast.LENGTH_SHORT).show();
+        }
+
+        cpspe.putString("color", "0");
+        cpspe.putString("colorPickerLast", "0");
+
         spe.putString("usernameFindLast", "0");
-        spe.putString("usernamet", "nope");
+        spe.putString("usernamet", "0");
+
+        cpspe.apply();
         spe.apply();
     }
 
