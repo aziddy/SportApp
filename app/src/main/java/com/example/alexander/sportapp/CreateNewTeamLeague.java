@@ -3,9 +3,11 @@ package com.example.alexander.sportapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +34,8 @@ public class CreateNewTeamLeague extends AppCompatActivity {
     SharedPreferences cpsp;
     SharedPreferences.Editor cpspe;
 
+    CardView cv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,16 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
         sp = getSharedPreferences("UsernameFindToTeamCreate", MODE_PRIVATE);
         spe = sp.edit();
+
+        cv = (CardView) findViewById(R.id.cardview);
+
+        cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(),ColorPicker.class);
+                startActivity(intent);
+            }
+        });
 
         cpsp = getSharedPreferences("ColorPickerToTeamCreate", MODE_PRIVATE);
         cpspe = cpsp.edit();
@@ -56,8 +70,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               //  Toast.makeText(getApplicationContext(), "TopBar", Toast.LENGTH_SHORT).show();
-              Intent intent = new Intent(getApplication(),ColorPicker.class);
-                startActivity(intent);
+
 
             }
         });
@@ -104,6 +117,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
         if (cpsp.getString("colorPickerLast", "0").equals("1")) {
 
             // color code
+            cv.setBackgroundColor(Color.argb(getAlpha(cpsp.getString("color", "0")),getR(cpsp.getString("color", "0")),getG(cpsp.getString("color", "0")),getB(cpsp.getString("color", "0"))));
             Toast.makeText(getApplicationContext(),  cpsp.getString("color", "0"), Toast.LENGTH_SHORT).show();
         }
 
@@ -117,7 +131,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
         spe.apply();
     }
 
-    public void uploadLeagueToServer(String leagueName, String rankSystem, String sport, String leagueType, Boolean privateVAR , String hostusername) {
+    public void uploadLeagueToServer(String teamName, String teamColor, String currentLeague, String wins, String loses , String players, String rank, String admins) {
 
         class AsyncClass extends AsyncTask<String, Void, String> {
 
@@ -136,15 +150,16 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
                 HashMap<String,String> hm = new HashMap<String, String>();
 
-                hm.put("leaguename", params[0]);
-                hm.put("ranksystem", params[1]);
-                hm.put("sport", params[2]);
-                hm.put("leaguetype", params[3]);
-                hm.put("private", params[4]);
-                hm.put("hostusername", params[5]);
+                hm.put("teamname", params[0]);
+                hm.put("teamcolor", params[1]);
+                hm.put("currentleague", params[2]);
+                hm.put("wins", params[3]);
+                hm.put("loses", params[4]);
+                hm.put("players", params[5]);
+                hm.put("rank", params[6]);
+                hm.put("admins", params[7]);
 
-
-                return rc.sendPostRequest("http://zidros.ca/sportappcreateleagueupload.php", hm);
+                return rc.sendPostRequest("http://zidros.ca/sportappcreateteamleagueupload.php", hm);
 
             }
 
@@ -161,9 +176,83 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
             }
         }
+
+        new AsyncClass().execute(teamName, teamColor, currentLeague, wins,  loses , players, rank, admins);
        // new AsyncClass().execute(leagueName, rankSystem, sport, leagueType, Boolean.toString(privateVAR), hostusername);
 
     }
 
+
+    public int getAlpha(String a){
+        String result = "";
+
+        for (int x = 0; x < a.length(); x++){
+            if (a.charAt(x) == ','){
+                x = a.length();
+            } else {
+                result = result + a.charAt(x);
+            }
+        }
+        return Integer.parseInt(result);
+    }
+
+
+    public int getR (String a) {
+        String result = "";
+        int commaPass = 0;
+
+        for (int x = 0; x < a.length(); x++){
+            if(a.charAt(x) == ',' && !(commaPass == 1)) {
+                commaPass++;
+
+            } else if (a.charAt(x) == ',' && (commaPass == 1)){
+                x = a.length();
+
+            } else if (commaPass == 1) {
+                result = result + a.charAt(x);
+            }
+        }
+        //
+        return Integer.parseInt(result);
+    }
+
+
+    public int getG (String a) {
+        String result = "";
+        int commaPass = 0;
+
+        for (int x = 0; x < a.length(); x++){
+            if(a.charAt(x) == ',' && !(commaPass == 2)) {
+                commaPass++;
+
+            } else if (a.charAt(x) == ',' && (commaPass == 2)){
+                x = a.length();
+
+            } else if (commaPass == 2) {
+                result = result + a.charAt(x);
+            }
+        }
+
+        return Integer.parseInt(result);
+    }
+
+    public int getB (String a) {
+        String result = "";
+        int commaPass = 0;
+
+        for (int x = 0; x < a.length(); x++){
+            if(a.charAt(x) == ',' && !(commaPass == 3)) {
+                commaPass++;
+
+            } else if (a.charAt(x) == ',' && (commaPass == 3)){
+                x = a.length();
+
+            } else if (commaPass == 3) {
+                result = result + a.charAt(x);
+            }
+        }
+
+        return Integer.parseInt(result);
+    }
 
 }
