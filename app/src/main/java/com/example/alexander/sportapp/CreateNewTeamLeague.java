@@ -1,6 +1,7 @@
 package com.example.alexander.sportapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +33,8 @@ public class CreateNewTeamLeague extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor spe;
 
+    String TeamColor;
+
     SharedPreferences cpsp;
     SharedPreferences.Editor cpspe;
 
@@ -45,12 +49,14 @@ public class CreateNewTeamLeague extends AppCompatActivity {
         spe = sp.edit();
 
         cv = (CardView) findViewById(R.id.cardview);
+        et = (EditText) findViewById(R.id.LeagueNameEditText);
 
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(),ColorPicker.class);
                 startActivity(intent);
+
             }
         });
 
@@ -70,7 +76,25 @@ public class CreateNewTeamLeague extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               //  Toast.makeText(getApplicationContext(), "TopBar", Toast.LENGTH_SHORT).show();
+                SharedPreferences sf = getSharedPreferences("CurrentLeagueSelected", MODE_PRIVATE);
+                SharedPreferences userClientInfo = getSharedPreferences("StoredActiveUserDate",MODE_PRIVATE);
+               // userClientInfo.getString("username", "noValue")
+                String rank = "(" + sf.getString("CurrentLeague", "no workerino") + ")" + "W0L0R0";
+                String players = "";
 
+                if(data.size() > 1){
+
+                    for (int x = 0; x < data.size() - 1; x++) {
+
+                        players += data.get(x).userName;
+                        players += ",";
+                    }
+                }
+
+                players += data.get(data.size()-1).userName;
+
+                //Toast.makeText(getApplicationContext(), players, Toast.LENGTH_SHORT).show();
+                uploadTeamToServer(et.getText().toString(), TeamColor, sf.getString("CurrentLeague", "no workerino"), "0", "0", players, rank, "none", userClientInfo.getString("username", "noValue"));
 
             }
         });
@@ -119,6 +143,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
             // color code
             cv.setBackgroundColor(Color.argb(getAlpha(cpsp.getString("color", "0")),getR(cpsp.getString("color", "0")),getG(cpsp.getString("color", "0")),getB(cpsp.getString("color", "0"))));
             Toast.makeText(getApplicationContext(),  cpsp.getString("color", "0"), Toast.LENGTH_SHORT).show();
+            TeamColor = cpsp.getString("color", "0");
         }
 
         cpspe.putString("color", "0");
@@ -129,9 +154,10 @@ public class CreateNewTeamLeague extends AppCompatActivity {
 
         cpspe.apply();
         spe.apply();
+
     }
 
-    public void uploadLeagueToServer(String teamName, String teamColor, String currentLeague, String wins, String loses , String players, String rank, String admins) {
+    public void uploadTeamToServer(String teamName, String teamColor, String currentLeague, String wins, String loses , String players, String rank, String admins, String Creator) {
 
         class AsyncClass extends AsyncTask<String, Void, String> {
 
@@ -158,6 +184,8 @@ public class CreateNewTeamLeague extends AppCompatActivity {
                 hm.put("players", params[5]);
                 hm.put("rank", params[6]);
                 hm.put("admins", params[7]);
+                hm.put("creator", params[8]);
+
 
                 return rc.sendPostRequest("http://zidros.ca/sportappcreateteamleagueupload.php", hm);
 
@@ -177,7 +205,7 @@ public class CreateNewTeamLeague extends AppCompatActivity {
             }
         }
 
-        new AsyncClass().execute(teamName, teamColor, currentLeague, wins,  loses , players, rank, admins);
+        new AsyncClass().execute(teamName, teamColor, currentLeague, wins,  loses , players, rank, admins, Creator);
        // new AsyncClass().execute(leagueName, rankSystem, sport, leagueType, Boolean.toString(privateVAR), hostusername);
 
     }

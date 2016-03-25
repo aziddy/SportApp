@@ -210,7 +210,13 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                       //  Toast.makeText(getActivity(), ListViewDataParent.get(position).HostUserName, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), ManageMyLeaguesMatches.class);
                     startActivity(intent);
+                    SharedPreferences sf = getActivity().getSharedPreferences("CurrentLeagueSelected", getActivity().MODE_PRIVATE);
+                    SharedPreferences.Editor sfe = sf.edit();
 
+                    sfe.putString("CurrentLeague", ListViewDataParent.get(position).LeagueName);
+                    sfe.apply();
+                  //  Toast.makeText(getContext(), sf.getString("CurrentLeague", "no workerino"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), sf.getString("CurrentLeague", "no workerino"), Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -226,9 +232,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
     }
 
-
-
-
     /**
      *
      *
@@ -236,7 +239,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
      *
      *
      * */
-
 
     public void getMyHostedLeagues(String hostusername) {
 
@@ -258,7 +260,6 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 HashMap<String,String> hm = new HashMap<String, String>();
 
                 hm.put("hostusername", params[0]);
-
 
                 return rc.sendPostRequest("http://zidros.ca/sportappgetmyhostedleagues.php", hm);
 
