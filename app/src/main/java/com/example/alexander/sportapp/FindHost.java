@@ -65,7 +65,7 @@ public class FindHost extends BaseMenu {
             //    Intent intent = new Intent(FindHost.this, HostLeague_CreateOne.class);
               //  startActivity(intent);
 
-                setContentView(R.layout.myleagues_listview);
+                setContentView(R.layout.teamleague_listview);
             }
         });
 

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -232,10 +233,16 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
             SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
             SharedPreferences sf = getActivity().getSharedPreferences("CurrentLeagueSelected", getActivity().MODE_PRIVATE);
 
+            listView = (ListView) view.findViewById(R.id.listView);
+
+            ArrayList<TeamLeagueListViewData> data = new ArrayList<TeamLeagueListViewData>();
+            data.add(new TeamLeagueListViewData("The Warp", "255,255,255,0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
+            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "95", "37", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
 
 
+            TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), data);
+            listView.setAdapter(adapter);
 
-            Toast.makeText(getContext(), getContext().toString(),Toast.LENGTH_SHORT).show();
 
         }
 
