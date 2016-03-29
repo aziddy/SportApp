@@ -48,6 +48,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
     ArrayList<HostMyLeagueListViewData> ListViewDataParent = new ArrayList<HostMyLeagueListViewData>();
 
+
     String activityName = "";
     Boolean pickup = false;
     Boolean league = false;
@@ -74,6 +75,8 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                     }
                 }
 
+
+                /**  ADD Activities here  */
 
                 if (activityName.equals("ManageMyPickups")) {
                     pickup = true;
@@ -222,6 +225,22 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
             });
 
         }
+
+
+        if (ManageMyLeaguesTeams){
+
+            SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
+            SharedPreferences sf = getActivity().getSharedPreferences("CurrentLeagueSelected", getActivity().MODE_PRIVATE);
+
+
+
+
+            Toast.makeText(getContext(), getContext().toString(),Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
         // Inflate the layout for this fragment
         return view;
     }
