@@ -235,10 +235,48 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             listView = (ListView) view.findViewById(R.id.listView);
 
+            String LeagueName = "a";
+
             ArrayList<TeamLeagueListViewData> data = new ArrayList<TeamLeagueListViewData>();
             data.add(new TeamLeagueListViewData("The Warp", "255,255,255,0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
-            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "95", "37", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
+            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "80", "17", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
+            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
 
+
+            Boolean collect = false;
+
+            for (int x = 0; x < data.size(); x++){
+
+                //data.get(x).Rank
+                 for(int y = 0; y < data.get(x).Rank.length()-1; y++){
+
+
+                     if(collect){
+
+                         
+
+                     }
+
+                     if(data.get(x).Rank.charAt(y) == ','){
+
+
+
+                     }
+
+                     if(data.get(x).Rank.charAt(y) == '('){
+
+
+
+                     }
+
+                     if(data.get(x).Rank.charAt(y) == ')'){
+
+
+
+                     }
+
+                 }
+            }
 
             TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), data);
             listView.setAdapter(adapter);
