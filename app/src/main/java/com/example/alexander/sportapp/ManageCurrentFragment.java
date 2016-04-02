@@ -48,6 +48,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     ViewGroup container;
 
     ArrayList<HostMyLeagueListViewData> ListViewDataParent = new ArrayList<HostMyLeagueListViewData>();
+    ArrayList<TeamLeagueListViewData> ListViewDataParentTwo = new ArrayList<TeamLeagueListViewData>();
 
 
     String activityName = "";
@@ -237,13 +238,18 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
             String LeagueName = "a";
 
+            getMyLeagueTeam(sf.getString("CurrentLeague", "no value"));
+
+
             ArrayList<TeamLeagueListViewData> data = new ArrayList<TeamLeagueListViewData>();
-            data.add(new TeamLeagueListViewData("The Warp", "255,255,255,0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
-            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "80", "17", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
-            data.add(new TeamLeagueListViewData("The Warp", "255,255,0,255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
+            //data.add(new TeamLeagueListViewData("The Warp", "255,255,255,0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
+           // data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "80", "17", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
+         //   data.add(new TeamLeagueListViewData("The Warp", "255,255,0,255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
 
 
             Boolean collect = false;
+            Boolean correctLeague = false;
+            String temp = "";
 
             for (int x = 0; x < data.size(); x++){
 
@@ -251,10 +257,18 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                  for(int y = 0; y < data.get(x).Rank.length()-1; y++){
 
 
+
+
                      if(collect){
 
-                         
+                         temp += data.get(x).Rank.charAt(y);
 
+
+                     }
+
+
+                     if(data.get(x).Rank.charAt(y+1) == ')'){
+                         collect = false;
                      }
 
                      if(data.get(x).Rank.charAt(y) == ','){
@@ -265,13 +279,16 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
                      if(data.get(x).Rank.charAt(y) == '('){
 
-
+                           collect = true;
 
                      }
 
                      if(data.get(x).Rank.charAt(y) == ')'){
 
+                          collect = true;
+                         if (temp == "21"){
 
+                         }
 
                      }
 
@@ -441,5 +458,148 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         new UserLoginClass().execute(hostusername);
 
     }
+
+
+    public void getMyLeagueTeam(String currentLeague) {
+
+        class UserLoginClass extends AsyncTask<String, Void, String> {
+
+            ProgressDialog loading;
+
+
+            @Override
+            protected void onPreExecute(){
+                loading = ProgressDialog.show(getActivity(), "WAIT", null, true, true);
+            }
+
+            @Override
+            protected String doInBackground(String... params){
+
+                RegisterUserClass rc = new RegisterUserClass();
+
+                HashMap<String,String> hm = new HashMap<String, String>();
+
+                //hm.put("hostusername", params[0]);
+                  hm.put("currentleague", params[0]);
+             //     hm.put("creator", params[1]);
+
+                return rc.sendPostRequest("http://zidros.ca/sportappgetleagueteams.php", hm);
+
+            }
+
+            @Override
+            protected void onPostExecute(String s){
+
+
+                boolean one = false;
+                boolean two = false;
+
+                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+
+                ArrayList<TeamLeagueListViewData> ListViewData = new ArrayList<TeamLeagueListViewData>();
+
+                /** 10 VALUES */
+
+/*
+                // remove later
+                boolean start = true;
+                boolean getNumberOfElementsPerArray = false;
+
+                String[] elementValues = new String[21];
+                int elementIterator = 0;
+
+                boolean inBetween = false;
+
+                String temp = "";
+
+                String NumberOfElementsPerArray = "";
+
+                boolean collect = false;
+                String yo = "";
+                for (int x = 0; x < (s.length()-1); x++){
+
+
+                    if( s.charAt(x) == '%' && !two && inBetween) {
+                        elementValues[elementIterator] = temp;
+
+                     //   ListViewData.add(new TeamLeagueListViewData(elementValues[0],elementValues[1],elementValues[2],elementValues[3],elementValues[4],elementValues[5],elementValues[6],elementValues[8] ));
+
+                        temp = "";
+                        collect = false;
+                        one = true;
+                        elementIterator = 0;
+
+                    } else if (s.charAt(x) == '%' && !two && !start && !inBetween){
+                        if (NumberOfElementsPerArray.length() > 0){
+                            getNumberOfElementsPerArray = false;
+                            elementValues = new String[Integer.parseInt(NumberOfElementsPerArray)];
+                            NumberOfElementsPerArray = "";
+
+                        }
+
+                        collect = false;
+                        one = true;
+
+                        // remove later
+                        getNumberOfElementsPerArray = false;
+
+                        // remove later
+                    } else if (getNumberOfElementsPerArray) {
+
+                        NumberOfElementsPerArray += s.charAt(x);
+
+                    }
+
+                    // remove later
+                    if (s.charAt(x) == '%' && start){
+
+                        start = false;
+                        getNumberOfElementsPerArray = true;
+                    }
+
+                    if (s.charAt(x) == 'I' && one){
+                        one = false;
+                        two = true;
+                    }
+
+                    if (s.charAt(x) == '%' && two){
+
+                        inBetween = true;
+                        two = false;
+                        collect = true;
+
+
+                    } else if (collect) {
+
+                        if (s.charAt(x) == ','){
+
+                            elementValues[elementIterator] = temp;
+                            temp = "";
+                            elementIterator++;
+
+                        } else {
+
+                            temp += s.charAt(x);
+
+                        }
+
+                    }
+
+                }
+
+                ListViewDataParentTwo = ListViewData;
+
+                TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), ListViewData);
+
+                listView.setAdapter(adapter);
+
+                loading.dismiss();
+*/
+            }
+        }
+        new UserLoginClass().execute(currentLeague);
+
+    }
+
 
 }
