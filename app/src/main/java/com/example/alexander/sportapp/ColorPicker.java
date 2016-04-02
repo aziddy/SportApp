@@ -37,34 +37,34 @@ public class ColorPicker extends Activity {
         gv = (GridView) findViewById(R.id.grid);
 
         final ArrayList<String> data = new ArrayList<String>();
-        data.add("255,255,0,255");
-        data.add("255,255,0,0");
-        data.add("255,0,255,0");
-        data.add("255,0,0,255");
-        data.add("255,255,255,255");
-        data.add("255,55,0,55");
-        data.add("255,102,0,102");
-        data.add("255,204,102,0");
-        data.add("255,255,255,0");
-        data.add("255,0,255,255");
-        data.add("255,102,102,51");
-        data.add("255,255,0,102");
-        data.add("255,0,51,0");
-        data.add("255,153,255,102");
-        data.add("255,153,124,243");
-        data.add("255,0,124,243");
-        data.add("255,129,44,0");
-        data.add("255,90,51,0");
-        data.add("255,98,178,255");
-        data.add("255,66,111,8");
-        data.add("255,103,135,8");
-        data.add("255,254,90,0");
-        data.add("255,254,142,254");
-        data.add("255,12,0,107");
+        data.add("255-255-0-255");
+        data.add("255-255-0-0");
+        data.add("255-0-255-0");
+        data.add("255-0-0-255");
+        data.add("255-255-255-255");
+        data.add("255-55-0-55");
+        data.add("255-102-0-102");
+        data.add("255-204-102-0");
+        data.add("255-255-255-0");
+        data.add("255-0-255-255");
+        data.add("255-102-102-51");
+        data.add("255-255-0-102");
+        data.add("255-0-51-0");
+        data.add("255-153-255-102");
+        data.add("255-153-124-243");
+        data.add("255-0-124-243");
+        data.add("255-129-44-0");
+        data.add("255-90-51-0");
+        data.add("255-98-178-255");
+        data.add("255-66-111-8");
+        data.add("255-103-135-8");
+        data.add("255-254-90-0");
+        data.add("255-254-142-254");
+        data.add("255-12-0-107");
 
 
          ColorPickerAdapter adapter = new ColorPickerAdapter(getApplicationContext(), data);
-       // ArrayAdapter<String> ap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, data);
+       // ArrayAdapter<String> ap = new ArrayAdapter<String>(this-android.R.layout.simple_list_item_1- data);
 
         gv.setAdapter(adapter);
 
@@ -74,7 +74,7 @@ public class ColorPicker extends Activity {
                 spe.putString("color", data.get(position));
                 spe.putString("colorPickerLast", "1");
                 spe.apply();
-              //  Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext()- Integer.toString(position)- Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

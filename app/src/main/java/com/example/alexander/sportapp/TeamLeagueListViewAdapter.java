@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,25 +39,36 @@ public class TeamLeagueListViewAdapter extends ArrayAdapter<TeamLeagueListViewDa
     //    TextView LeagueNameText = (TextView) convertView.findViewById(R.id.leagueNameText);
 
         String LeagueTempStorage = "";
-        Boolean collectLeague = false;
+        String temp = "";
+        Boolean collect = false;
 
         for(int x = 0; x < data.Rank.length()-1; x++) {
 
             if (data.Rank.charAt(x) == ')'){
 
-                collectLeague = false;
+                collect = false;
+
+                if (temp == "no") {
+
+                    data.Rank = "what";
+                    x = 999;
+
+
+                }
+                Toast.makeText(getContext(), Integer.toString(temp.length()), Toast.LENGTH_SHORT).show();
+                temp = "";
 
             }
 
-            if (collectLeague){
+            if (collect){
 
-
+                temp += data.Rank.charAt(x);
 
             }
 
               if (data.Rank.charAt(x) == '(') {
 
-                  collectLeague = true;
+                  collect = true;
 
               }
           }
@@ -91,7 +103,7 @@ public class TeamLeagueListViewAdapter extends ArrayAdapter<TeamLeagueListViewDa
         String result = "";
 
         for (int x = 0; x < a.length(); x++){
-            if (a.charAt(x) == ','){
+            if (a.charAt(x) == '-'){
                 x = a.length();
             } else {
                 result = result + a.charAt(x);
@@ -106,10 +118,10 @@ public class TeamLeagueListViewAdapter extends ArrayAdapter<TeamLeagueListViewDa
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 1)) {
+            if(a.charAt(x) == '-' && !(commaPass == 1)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 1)){
+            } else if (a.charAt(x) == '-' && (commaPass == 1)){
                 x = a.length();
 
             } else if (commaPass == 1) {
@@ -126,10 +138,10 @@ public class TeamLeagueListViewAdapter extends ArrayAdapter<TeamLeagueListViewDa
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 2)) {
+            if(a.charAt(x) == '-' && !(commaPass == 2)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 2)){
+            } else if (a.charAt(x) == '-' && (commaPass == 2)){
                 x = a.length();
 
             } else if (commaPass == 2) {
@@ -145,10 +157,10 @@ public class TeamLeagueListViewAdapter extends ArrayAdapter<TeamLeagueListViewDa
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 3)) {
+            if(a.charAt(x) == '-' && !(commaPass == 3)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 3)){
+            } else if (a.charAt(x) == '-' && (commaPass == 3)){
                 x = a.length();
 
             } else if (commaPass == 3) {

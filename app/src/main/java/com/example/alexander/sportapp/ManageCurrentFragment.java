@@ -55,6 +55,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
     Boolean pickup = false;
     Boolean league = false;
     Boolean ManageMyLeaguesTeams = false;
+    Boolean LeagueMatch = false;
 
 
     @Override
@@ -86,6 +87,8 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                     league = true;
                 } else if (activityName.equals("ManageMyLeaguesTeams")){
                     ManageMyLeaguesTeams = true;
+                } else if (activityName.equals("ManageMyLeaguesMatches")){
+                    LeagueMatch = true;
                 }
 
                 x = -1;
@@ -229,6 +232,16 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
         }
 
 
+
+        if (LeagueMatch){
+
+
+
+
+        }
+
+
+
         if (ManageMyLeaguesTeams){
 
             SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
@@ -242,9 +255,9 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
             ArrayList<TeamLeagueListViewData> data = new ArrayList<TeamLeagueListViewData>();
-            //data.add(new TeamLeagueListViewData("The Warp", "255,255,255,0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
-           // data.add(new TeamLeagueListViewData("The Warp", "255,255,0,0", "a", "80", "17", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
-         //   data.add(new TeamLeagueListViewData("The Warp", "255,255,0,255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
+        //    data.add(new TeamLeagueListViewData("The Warp", "255-255-255-0","a","95","37","ziddy,testers,bagel","(a)W2L3R3,(b)W1L7R8","ziddy"));
+         //   data.add(new TeamLeagueListViewData("The Warp", "255-255-0-0", "a", "80", "17", "ziddy,testers,bagel", "(a)W7L2R1", "ziddy"));
+          //  data.add(new TeamLeagueListViewData("The Warp", "255-255-0-255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
 
 
             Boolean collect = false;
@@ -295,8 +308,8 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                  }
             }
 
-            TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), data);
-            listView.setAdapter(adapter);
+        //    TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), data);
+          //  listView.setAdapter(adapter);
 
 
         }
@@ -494,13 +507,13 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 boolean one = false;
                 boolean two = false;
 
-                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
 
                 ArrayList<TeamLeagueListViewData> ListViewData = new ArrayList<TeamLeagueListViewData>();
 
                 /** 10 VALUES */
 
-/*
+
                 // remove later
                 boolean start = true;
                 boolean getNumberOfElementsPerArray = false;
@@ -522,7 +535,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                     if( s.charAt(x) == '%' && !two && inBetween) {
                         elementValues[elementIterator] = temp;
 
-                     //   ListViewData.add(new TeamLeagueListViewData(elementValues[0],elementValues[1],elementValues[2],elementValues[3],elementValues[4],elementValues[5],elementValues[6],elementValues[8] ));
+                        ListViewData.add(new TeamLeagueListViewData(elementValues[0],elementValues[1],elementValues[2],elementValues[3],elementValues[4],elementValues[5],elementValues[6],elementValues[8] ));
 
                         temp = "";
                         collect = false;
@@ -594,7 +607,7 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
                 listView.setAdapter(adapter);
 
                 loading.dismiss();
-*/
+
             }
         }
         new UserLoginClass().execute(currentLeague);

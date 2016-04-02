@@ -84,7 +84,7 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         String result = "";
 
         for (int x = 0; x < a.length(); x++){
-            if (a.charAt(x) == ','){
+            if (a.charAt(x) == '-'){
                 x = a.length();
             } else {
                 result = result + a.charAt(x);
@@ -99,10 +99,10 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 1)) {
+            if(a.charAt(x) == '-' && !(commaPass == 1)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 1)){
+            } else if (a.charAt(x) == '-' && (commaPass == 1)){
                 x = a.length();
 
             } else if (commaPass == 1) {
@@ -119,10 +119,10 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 2)) {
+            if(a.charAt(x) == '-' && !(commaPass == 2)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 2)){
+            } else if (a.charAt(x) == '-' && (commaPass == 2)){
                 x = a.length();
 
             } else if (commaPass == 2) {
@@ -138,10 +138,10 @@ public class ColorPickerAdapter extends ArrayAdapter<String> {
         int commaPass = 0;
 
         for (int x = 0; x < a.length(); x++){
-            if(a.charAt(x) == ',' && !(commaPass == 3)) {
+            if(a.charAt(x) == '-' && !(commaPass == 3)) {
                 commaPass++;
 
-            } else if (a.charAt(x) == ',' && (commaPass == 3)){
+            } else if (a.charAt(x) == '-' && (commaPass == 3)){
                 x = a.length();
 
             } else if (commaPass == 3) {
