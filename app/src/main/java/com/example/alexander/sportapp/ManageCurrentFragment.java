@@ -235,6 +235,12 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
         if (LeagueMatch){
 
+            SharedPreferences userClientInfo = getActivity().getSharedPreferences("StoredActiveUserDate", getContext().MODE_PRIVATE);
+            SharedPreferences sf = getActivity().getSharedPreferences("CurrentLeagueSelected", getActivity().MODE_PRIVATE);
+
+       //  Toast.makeText(getContext(), "MATCH",Toast.LENGTH_SHORT).show();
+            listView = (ListView) view.findViewById(R.id.listView);
+
 
 
 
