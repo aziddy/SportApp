@@ -272,15 +272,42 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
 
 
 
-            listView.setOnClickListener(new View.OnClickListener() {
+
+
+                  /*  SharedPreferences sf = getActivity().getSharedPreferences("DataToLeagueTeamDetail", getContext().MODE_PRIVATE);
+
+                    Toast.makeText(getContext(), "woah", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), TeamLeagueDetail.class);
+                    startActivity(intent); */
+
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getContext(), Integer.toString(position),Toast.LENGTH_SHORT).show();
 
                     SharedPreferences sf = getActivity().getSharedPreferences("DataToLeagueTeamDetail", getContext().MODE_PRIVATE);
+                    SharedPreferences.Editor sfe = sf.edit();
 
-                  //  Toast.makeText(getContext(), "woah", Toast.LENGTH_SHORT).show();
+                    TeamLeagueListViewData idfk = ListViewDataParentTwo.get(position);
+
+                    sfe.putString("TeamName",idfk.TeamName);
+                    sfe.putString("TeamColor",idfk.TeamColor);
+                    sfe.putString("Players",idfk.Players);
+                    sfe.putString("Wins",idfk.Wins);
+                    sfe.putString("Losses",idfk.Losses);
+                    sfe.putString("Creator",idfk.Creator);
+                    sfe.putString("Rank",idfk.Rank);
+                    sfe.putString("CurrentLeague",idfk.CurrentLeague);
+                    //sfe.putString("",idfk.)
+                    sfe.apply();
+
+
+
+                    //Toast.makeText(getContext(), "woah", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), TeamLeagueDetail.class);
                     startActivity(intent);
+
                 }
             });
 

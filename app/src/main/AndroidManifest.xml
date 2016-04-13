@@ -134,7 +134,11 @@
         <activity
             android:name=".ColorPicker"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".TeamLeagueDetail"></activity>
+
+
+        <activity android:name=".TeamLeagueDetail"
+            android:theme="@style/AppTheme.NoActionBar" />
+            />
     </application>
 
 </manifest>
