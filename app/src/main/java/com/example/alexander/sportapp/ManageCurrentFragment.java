@@ -266,56 +266,23 @@ public class ManageCurrentFragment extends Fragment implements View.OnClickListe
           //  data.add(new TeamLeagueListViewData("The Warp", "255-255-0-255", "a", "60", "7", "ziddy,testers,bagel", "(b)W1L7R8,(a)W7L2R1", "ziddy"));
 
 
-            Boolean collect = false;
-            Boolean correctLeague = false;
-            String temp = "";
-
-            for (int x = 0; x < data.size(); x++){
-
-                //data.get(x).Rank
-                 for(int y = 0; y < data.get(x).Rank.length()-1; y++){
-
-
-
-
-                     if(collect){
-
-                         temp += data.get(x).Rank.charAt(y);
-
-
-                     }
-
-
-                     if(data.get(x).Rank.charAt(y+1) == ')'){
-                         collect = false;
-                     }
-
-                     if(data.get(x).Rank.charAt(y) == ','){
-
-
-
-                     }
-
-                     if(data.get(x).Rank.charAt(y) == '('){
-
-                           collect = true;
-
-                     }
-
-                     if(data.get(x).Rank.charAt(y) == ')'){
-
-                          collect = true;
-                         if (temp == "21"){
-
-                         }
-
-                     }
-
-                 }
-            }
 
         //    TeamLeagueListViewAdapter adapter = new TeamLeagueListViewAdapter(getContext(), data);
           //  listView.setAdapter(adapter);
+
+
+
+            listView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    SharedPreferences sf = getActivity().getSharedPreferences("DataToLeagueTeamDetail", getContext().MODE_PRIVATE);
+
+                  //  Toast.makeText(getContext(), "woah", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), TeamLeagueDetail.class);
+                    startActivity(intent);
+                }
+            });
 
 
         }

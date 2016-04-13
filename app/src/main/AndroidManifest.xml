@@ -131,11 +131,10 @@
             android:name=".UsernameFind"
             android:theme="@style/Theme.AppCompat.Dialog"
             android:windowSoftInputMode="stateHidden" />
-
-
-        <activity android:name=".ColorPicker"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            />
+        <activity
+            android:name=".ColorPicker"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".TeamLeagueDetail"></activity>
     </application>
 
 </manifest>
