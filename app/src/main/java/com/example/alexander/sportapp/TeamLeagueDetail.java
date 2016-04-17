@@ -37,6 +37,9 @@ public class TeamLeagueDetail extends AppCompatActivity {
 
         ArrayAdapter aa = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, data);
 
+        listview.setAdapter(aa);
+
+
 
     }
 }
